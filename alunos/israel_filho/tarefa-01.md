@@ -1,0 +1,6 @@
+
+Me chamo Israel, atualmente resido na cidade de Patos-PB e estou cursando o 9° período de Ciência da Computação pela UEPB. Possuo experiência acadêmica no desenvolvimento de aplicações web, atuando principalmente no front-end com React e integração via APIs REST.
+
+Atualmente, estou aprofundando meus estudos em Java, banco de dados MySQL e Spring Boot. Apesar de sempre fazer projetos com o front, eu sempre tive a curiosidade de saber como funciona toda a lógica por trás, foi aí que veio o interesse no back-end e na lógica de sistemas, visando uma formação sólida como desenvolvedor full-stack.
+
+Meu objetivo está no foco em aprendizado prático em Java, MySQL e Spring Boot, além de desenvolvimento front-end com React. Sou uma pessoa que gosta de correr atrás dos meus objetivos e de aprender tecnologias novas. Com essa curiosidade, disciplina, organização e facilidade que tenho para aprender novas linguagens, espero uma oportunidade para aplicar meus conhecimentos, evoluir tecnicamente e contribuir com soluções eficientes em um ambiente colaborativo.
