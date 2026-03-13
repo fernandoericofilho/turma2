@@ -70,6 +70,53 @@ Essa apresentação poderá ser utilizada:
 
 ---
 
+# 🧩 Segunda Etapa – Git, GitHub e Gitflow
+
+Após aprender a se posicionar como profissional, o próximo passo é dominar uma das ferramentas mais importantes do desenvolvimento de software moderno.
+
+O **Git** é utilizado por praticamente todas as equipes de tecnologia para controlar versões de código, colaborar em equipe e organizar a evolução de um produto.
+
+Nesta etapa você irá aprender:
+
+- Como organizar branches
+- Como escrever commits profissionais
+- Como abrir Pull Requests
+- Como trabalhar em equipe usando Git
+- Como funciona o fluxo **Gitflow**
+- Como lidar com **conflitos de merge**
+- Como evoluir versões de software
+
+O objetivo é entender **como projetos reais evoluem dentro de equipes de engenharia**.
+
+---
+
+## 📌 Tarefa 02 – Git, Commits e Gitflow
+
+Nesta tarefa você irá praticar:
+
+- Criação de branches
+- Escrita de commits claros
+- Organização de Pull Requests
+- Fluxo completo de **feature → release → hotfix**
+- Versionamento semântico
+- Resolução de conflitos de merge
+
+O exercício simula a evolução de um pequeno produto chamado:
+
+🐱 **Diário do Gatinho**
+
+Ao longo da atividade você irá acompanhar a evolução do sistema passando por novas funcionalidades, ajustes de release e correções em produção.
+
+---
+
+📄 **Documentação:**  
+`documentos/002_COMMIT_E_PULL_REQUEST.MD`
+
+📄 **Acesse a tarefa:**  
+`tarefas/002_TAREFA_GITFLOW.MD`
+
+---
+
 ## 💬 Mentalidade da Turma 2
 
 Você não está apenas fazendo exercícios.
