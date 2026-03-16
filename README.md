@@ -117,6 +117,62 @@ Ao longo da atividade você irá acompanhar a evolução do sistema passando por
 
 ---
 
+# 🧩 Terceira Etapa – Modelagem de Dados e Normalização
+
+Após entender como projetos evoluem com Git e Gitflow, o próximo passo é começar a trabalhar **fundamentos de banco de dados**.
+
+Nesta etapa você irá aprender um dos conceitos mais importantes da modelagem de dados:
+
+📚 **Normalização de Banco de Dados**
+
+A normalização é utilizada para:
+
+- reduzir redundância de dados  
+- evitar inconsistências  
+- organizar melhor as tabelas  
+- melhorar a integridade das informações  
+
+Você irá estudar as **três primeiras formas normais**:
+
+- **1FN – Primeira Forma Normal**  
+- **2FN – Segunda Forma Normal**  
+- **3FN – Terceira Forma Normal**
+
+Esses conceitos são fundamentais para qualquer desenvolvedor que trabalhe com:
+
+- APIs
+- sistemas backend
+- modelagem de banco
+- engenharia de dados
+
+---
+
+## 📌 Tarefa 03 – Normalização de Banco de Dados
+
+Nesta tarefa você irá:
+
+- analisar tabelas mal estruturadas  
+- identificar problemas de modelagem  
+- aplicar **1FN, 2FN e 3FN**  
+- reorganizar as tabelas corretamente  
+- documentar o resultado da normalização  
+
+Além disso, a atividade reforça práticas importantes como:
+
+- organização de diretórios no repositório  
+- versionamento com Git  
+- commits organizados por etapa de exercício  
+
+---
+
+📄 **Material de estudo:**  
+https://github.com/fernandoericofilho/turma2/blob/main/documentos/003_NORMALIZACAO.MD
+
+📄 **Acesse a tarefa:**  
+https://github.com/fernandoericofilho/turma2/blob/main/tarefas/003_TAREFA_NORMALIZACAO.MD
+
+---
+
 ## 💬 Mentalidade da Turma 2
 
 Você não está apenas fazendo exercícios.
