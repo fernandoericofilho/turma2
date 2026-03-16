@@ -1,188 +1,185 @@
-# 📚 Normalização de Banco de Dados
-## 1ª, 2ª e 3ª Forma Normal (1FN, 2FN e 3FN)
-
-A **normalização de banco de dados** é um processo usado para **organizar os dados em tabelas menores e relacionadas**, evitando problemas como:
-
-- duplicação de dados
-- inconsistência de informações
-- dificuldade de manutenção
-- atualizações incorretas
-
-O objetivo é **garantir integridade e eficiência no banco de dados**.
-
-As três primeiras formas normais são as mais utilizadas no desenvolvimento de sistemas.
+# 📄 Entrevista Técnica – Engenheiro(a) de Software Júnior  
+## 🚀 Turma 2 – Formação de Novos Desenvolvedores
 
 ---
 
-# 1️⃣ Primeira Forma Normal (1FN)
+## 🎯 Objetivo Geral
 
-Uma tabela está na **1ª Forma Normal** quando:
+Este repositório faz parte da **Turma 2** e tem como objetivo preparar novos desenvolvedores para os desafios reais do mercado de tecnologia.
 
-- Cada coluna possui **valores atômicos (apenas um valor por célula)**
-- Não existem **listas ou múltiplos valores na mesma coluna**
-- Cada registro pode ser identificado por uma **chave primária**
+Aqui você não vai apenas estudar conteúdo técnico.  
+Você vai aprender a:
 
-## ❌ Exemplo incorreto
+- Se posicionar como profissional desde o início da carreira  
+- Desenvolver disciplina e mentalidade de crescimento  
+- Construir base técnica sólida  
+- Entender como funcionam processos seletivos  
+- Evoluir com consistência  
 
-| cliente_id | nome | telefones |
-|---|---|---|
-| 1 | João | 9999-1111, 9888-2222 |
+A trilha foi estruturada para trabalhar dois pilares essenciais:
 
-Problema:
+### 🧠 Soft Skills
+- Comunicação clara e objetiva  
+- Postura profissional  
+- Organização e disciplina  
+- Capacidade de receber e aplicar feedback  
 
-O campo **telefones possui mais de um valor**.
-
----
-
-## ✅ Forma correta
-
-### Tabela Cliente
-
-| cliente_id | nome |
-|---|---|
-| 1 | João |
-
-### Tabela Telefone
-
-| telefone_id | cliente_id | telefone |
-|---|---|---|
-| 1 | 1 | 9999-1111 |
-| 2 | 1 | 9888-2222 |
+### 🛠️ Hard Skills
+- Fundamentos técnicos sólidos  
+- Versionamento com Git e GitHub  
+- Organização de projetos  
+- Base para evoluir em Java, Spring Boot, APIs, Docker, Banco de Dados, Cloud e Observabilidade (etapas seguintes)
 
 ---
 
-# 2️⃣ Segunda Forma Normal (2FN)
+# 🧩 Primeira Etapa – Posicionamento Profissional
 
-Para uma tabela estar na **2ª Forma Normal**, ela precisa:
+Antes de avançarmos para tecnologias mais complexas, você precisa aprender a se apresentar como profissional.
 
-- Estar na **1FN**
-- Todos os atributos devem depender **da chave primária completa**
-
-Isso é importante quando existe **chave composta**.
-
-## ❌ Exemplo incorreto
-
-| pedido_id | produto_id | produto_nome |
-|---|---|---|
-| 1 | 10 | Notebook |
-
-Aqui temos uma chave composta:
-
-
-(pedido_id, produto_id)
-
-
-Mas:
-
-
-produto_nome depende apenas de produto_id
-
-
-Isso gera redundância.
+Saber explicar quem você é, o que está estudando e onde quer chegar é parte fundamental da jornada.
 
 ---
 
-## ✅ Forma correta
+## 📌 Tarefa 01 – Apresentação Profissional
 
-### Tabela Produto
+Nesta primeira tarefa, você irá:
 
-| produto_id | produto_nome |
-|---|---|
-| 10 | Notebook |
+- Criar sua apresentação profissional
+- Praticar comandos básicos de Git
+- Trabalhar organização dentro do repositório
+- Atualizar ou estruturar seu LinkedIn
 
-### Tabela Pedido_Produto
+O objetivo é desenvolver:
 
-| pedido_id | produto_id |
-|---|---|
-| 1 | 10 |
+- Clareza na comunicação
+- Organização técnica
+- Disciplina nos estudos
+- Base conceitual sólida
 
----
-
-# 3️⃣ Terceira Forma Normal (3FN)
-
-Para estar na **3ª Forma Normal**, a tabela precisa:
-
-- Estar na **2FN**
-- Não possuir **dependências transitivas**
-
-Dependência transitiva ocorre quando:
-
-
-A → B
-B → C
-
-
-Ou seja:
-
-**C depende indiretamente de A**.
+Essa apresentação poderá ser utilizada:
+- Em entrevistas
+- No LinkedIn
+- Em dinâmicas
+- Em networking
+- Em apresentações técnicas futuras
 
 ---
 
-## ❌ Exemplo incorreto
+📄 **Material de estudo:**  
+[001_APRESENTACAO.md](https://github.com/fernandoericofilho/turma2/blob/main/documentos/001_APRESENTACAO.MD)
 
-| funcionario_id | nome | departamento | gerente_departamento |
-|---|---|---|---|
-| 1 | João | TI | Carlos |
-
-Problema:
-
-
-departamento → gerente_departamento
-
-
-Ou seja, o gerente depende do **departamento**, não do funcionário.
+🧪 **Acessar tarefa:**  
+[001_TAREFA_APRESENTACAO.md](https://github.com/fernandoericofilho/turma2/blob/main/tarefas/001_TAREFA_APRESENTACAO.MD)
 
 ---
 
-## ✅ Forma correta
+# 🧩 Segunda Etapa – Git, GitHub e Gitflow
 
-### Tabela Funcionário
+Após aprender a se posicionar como profissional, o próximo passo é dominar uma das ferramentas mais importantes do desenvolvimento de software moderno.
 
-| funcionario_id | nome | departamento_id |
-|---|---|---|
+O **Git** é utilizado por praticamente todas as equipes de tecnologia para controlar versões de código, colaborar em equipe e organizar a evolução de um produto.
 
-### Tabela Departamento
+Nesta etapa você irá aprender:
 
-| departamento_id | departamento_nome | gerente |
-|---|---|---|
+- Como organizar branches
+- Como escrever commits profissionais
+- Como abrir Pull Requests
+- Como trabalhar em equipe usando Git
+- Como funciona o fluxo **Gitflow**
+- Como lidar com **conflitos de merge**
+- Como evoluir versões de software
 
----
-
-# 🎯 Benefícios da Normalização
-
-Aplicar normalização ajuda a:
-
-- reduzir redundância de dados
-- evitar inconsistências
-- facilitar manutenção
-- melhorar integridade do banco
+O objetivo é entender **como projetos reais evoluem dentro de equipes de engenharia**.
 
 ---
 
-# 📚 Próximos Conceitos para Estudar
+## 📌 Tarefa 02 – Git, Commits e Gitflow
 
-Depois de entender normalização, é importante estudar também:
+Nesta tarefa você irá praticar:
 
-## 📌 Cardinalidade
+- Criação de branches
+- Escrita de commits claros
+- Organização de Pull Requests
+- Fluxo completo de **feature → release → hotfix**
+- Versionamento semântico
+- Resolução de conflitos de merge
 
-Define **quantos registros de uma entidade podem se relacionar com outra**.
+O exercício simula a evolução de um pequeno produto chamado:
 
-Exemplos:
+🐱 **Diário do Gatinho**
 
-- **1:1** → Pessoa → Passaporte
-- **1:N** → Cliente → Pedidos
-- **N:N** → Alunos → Disciplinas
+Ao longo da atividade você irá acompanhar a evolução do sistema passando por novas funcionalidades, ajustes de release e correções em produção.
 
 ---
 
-## 📌 DER (Diagrama Entidade-Relacionamento)
+📄 **Material de estudo:**  
+[002_COMMIT_E_PULL_REQUEST.MD](https://github.com/fernandoericofilho/turma2/blob/main/documentos/002_COMMIT_E_PULL_REQUEST.MD)
 
-O **DER** é a representação visual da estrutura do banco de dados.
+🧪 **Acessar tarefa:**  
+[002_TAREFA_GITFLOW.MD](https://github.com/fernandoericofilho/turma2/blob/main/tarefas/002_TAREFA_GITFLOW.MD)
 
-Ele mostra:
+---
 
-- Entidades
-- Relacionamentos
-- Cardinalidade
-- Atributos
-- Chaves primárias e estrangeiras
+# 🧩 Terceira Etapa – Modelagem de Dados e Normalização
+
+Após entender como projetos evoluem com Git e Gitflow, o próximo passo é começar a trabalhar **fundamentos de banco de dados**.
+
+Nesta etapa você irá aprender um dos conceitos mais importantes da modelagem de dados:
+
+📚 **Normalização de Banco de Dados**
+
+A normalização é utilizada para:
+
+- reduzir redundância de dados  
+- evitar inconsistências  
+- organizar melhor as tabelas  
+- melhorar a integridade das informações  
+
+Você irá estudar as **três primeiras formas normais**:
+
+- **1FN – Primeira Forma Normal**  
+- **2FN – Segunda Forma Normal**  
+- **3FN – Terceira Forma Normal**
+
+Esses conceitos são fundamentais para qualquer desenvolvedor que trabalhe com:
+
+- APIs
+- sistemas backend
+- modelagem de banco
+- engenharia de dados
+
+---
+
+## 📌 Tarefa 03 – Normalização de Banco de Dados
+
+Nesta tarefa você irá:
+
+- analisar tabelas mal estruturadas  
+- identificar problemas de modelagem  
+- aplicar **1FN, 2FN e 3FN**  
+- reorganizar as tabelas corretamente  
+- documentar o resultado da normalização  
+
+Além disso, a atividade reforça práticas importantes como:
+
+- organização de diretórios no repositório  
+- versionamento com Git  
+- commits organizados por etapa de exercício  
+
+---
+
+📄 **Material de estudo:**  
+[003_NORMALIZACAO.MD](https://github.com/fernandoericofilho/turma2/blob/main/documentos/003_NORMALIZACAO.MD)
+
+🧪 **Acessar tarefa:**  
+[003_TAREFA_NORMALIZACAO.MD](https://github.com/fernandoericofilho/turma2/blob/main/tarefas/003_TAREFA_NORMALIZACAO.MD)
+
+---
+
+## 💬 Mentalidade da Turma 2
+
+Você não está apenas fazendo exercícios.
+
+Você está começando a construir sua identidade como Desenvolvedor(a).
+
+Organização, clareza e consistência serão diferenciais ao longo de toda a jornada.
