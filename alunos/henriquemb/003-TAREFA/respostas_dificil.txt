@@ -1,0 +1,16 @@
+Exercício 7 — Pedido completo
+1- cliente_nome -> cliente_cidade e produto_nome -> preco.
+2- Anexo <imagens/7.png>
+
+Exercício 8 — Venda e vendedor
+1- vendedor_nome e loja_cidade.
+2- Anexo <imagens/8.png>
+
+Exercício 9 — Sistema de universidade
+1- Sim.
+2- Aluno, Professor, Disciplina, AlunosDisciplina e ProfessorDisciplina (Anexo <imagens/9.png>).
+
+Exercício 10 — Sistema de e-commerce
+1- cliente_nome -> cliente_email e produto_nome -> categoria.
+2- Anexo <imagens/10.png>
+3- Cliente, Pedido, Produto, Categoria, PedidoProduto e ProdutoCategoria.
