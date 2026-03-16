@@ -65,8 +65,11 @@ Essa apresentação poderá ser utilizada:
 
 ---
 
-📄 **Documentação:** `documentos/001_APRESENTACAO.md`  
-📄 **Acesse a tarefa:** `tarefas/001_TAREFA_APRESENTACAO.md`
+📄 **Material de estudo:**  
+[001_APRESENTACAO.md](https://github.com/fernandoericofilho/turma2/blob/main/documentos/001_APRESENTACAO.MD)
+
+🧪 **Acessar tarefa:**  
+[001_TAREFA_APRESENTACAO.md](https://github.com/fernandoericofilho/turma2/blob/main/tarefas/001_TAREFA_APRESENTACAO.MD)
 
 ---
 
@@ -109,11 +112,11 @@ Ao longo da atividade você irá acompanhar a evolução do sistema passando por
 
 ---
 
-📄 **Documentação:**  
-`documentos/002_COMMIT_E_PULL_REQUEST.MD`
+📄 **Material de estudo:**  
+[002_COMMIT_E_PULL_REQUEST.MD](https://github.com/fernandoericofilho/turma2/blob/main/documentos/002_COMMIT_E_PULL_REQUEST.MD)
 
-📄 **Acesse a tarefa:**  
-`tarefas/002_TAREFA_GITFLOW.MD`
+🧪 **Acessar tarefa:**  
+[002_TAREFA_GITFLOW.MD](https://github.com/fernandoericofilho/turma2/blob/main/tarefas/002_TAREFA_GITFLOW.MD)
 
 ---
 
@@ -166,10 +169,10 @@ Além disso, a atividade reforça práticas importantes como:
 ---
 
 📄 **Material de estudo:**  
-https://github.com/fernandoericofilho/turma2/blob/main/documentos/003_NORMALIZACAO.MD
+[003_NORMALIZACAO.MD](https://github.com/fernandoericofilho/turma2/blob/main/documentos/003_NORMALIZACAO.MD)
 
-📄 **Acesse a tarefa:**  
-https://github.com/fernandoericofilho/turma2/blob/main/tarefas/003_TAREFA_NORMALIZACAO.MD
+🧪 **Acessar tarefa:**  
+[003_TAREFA_NORMALIZACAO.MD](https://github.com/fernandoericofilho/turma2/blob/main/tarefas/003_TAREFA_NORMALIZACAO.MD)
 
 ---
 
