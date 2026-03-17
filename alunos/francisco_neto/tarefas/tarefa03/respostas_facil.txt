@@ -1,0 +1,50 @@
+Tabelas Finais (1.png):
+Tabela: Clientes
+| cliente_id (PK) | nome |
+|---|---|
+| 1 | João |
+| 2 | Maria |
+
+Tabela: Telefones
+| cliente_id (FK/PK) | telefone (PK) |
+|---|---|
+| 1 | 9999-1111 |
+| 1 | 9888-2222 |
+| 2 | 9777-3333 |
+
+--------------------------------------------------------------
+
+Tabelas Finais (2.png):
+Tabela: Pedidos
+| pedido_id (PK) | cliente |
+|---|---|
+| 1 | João |
+| 2 | Maria |
+
+Tabela: Pedido_Itens
+| pedido_id (FK/PK) | produto (PK) |
+|---|---|
+| 1 | arroz |
+| 1 | feijão |
+| 2 | leite |
+
+--------------------------------------------------------------
+
+Tabelas Finais (3.png):
+Tabela: Cursos
+| curso_id (PK) | curso_nome |
+|---|---|
+| 1 | Java |
+Tabela: Alunos
+| aluno_id (PK) | aluno_nome |
+|---|---|
+| 10 | Ana |
+| 11 | Carlos |
+| 12 | Pedro |
+
+Tabela: Matriculas
+| curso_id (FK/PK) | aluno_id (FK/PK) |
+|---|---|
+| 1 | 10 |
+| 1 | 11 |
+| 1 | 12 |
