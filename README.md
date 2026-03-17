@@ -65,8 +65,114 @@ Essa apresentação poderá ser utilizada:
 
 ---
 
-📄 **Documentação:** `documentos/001_APRESENTACAO.md`  
-📄 **Acesse a tarefa:** `tarefas/001_TAREFA_APRESENTACAO.md`
+📄 **Material de estudo:**  
+[001_APRESENTACAO.md](https://github.com/fernandoericofilho/turma2/blob/main/documentos/001_APRESENTACAO.MD)
+
+🧪 **Acessar tarefa:**  
+[001_TAREFA_APRESENTACAO.md](https://github.com/fernandoericofilho/turma2/blob/main/tarefas/001_TAREFA_APRESENTACAO.MD)
+
+---
+
+# 🧩 Segunda Etapa – Git, GitHub e Gitflow
+
+Após aprender a se posicionar como profissional, o próximo passo é dominar uma das ferramentas mais importantes do desenvolvimento de software moderno.
+
+O **Git** é utilizado por praticamente todas as equipes de tecnologia para controlar versões de código, colaborar em equipe e organizar a evolução de um produto.
+
+Nesta etapa você irá aprender:
+
+- Como organizar branches
+- Como escrever commits profissionais
+- Como abrir Pull Requests
+- Como trabalhar em equipe usando Git
+- Como funciona o fluxo **Gitflow**
+- Como lidar com **conflitos de merge**
+- Como evoluir versões de software
+
+O objetivo é entender **como projetos reais evoluem dentro de equipes de engenharia**.
+
+---
+
+## 📌 Tarefa 02 – Git, Commits e Gitflow
+
+Nesta tarefa você irá praticar:
+
+- Criação de branches
+- Escrita de commits claros
+- Organização de Pull Requests
+- Fluxo completo de **feature → release → hotfix**
+- Versionamento semântico
+- Resolução de conflitos de merge
+
+O exercício simula a evolução de um pequeno produto chamado:
+
+🐱 **Diário do Gatinho**
+
+Ao longo da atividade você irá acompanhar a evolução do sistema passando por novas funcionalidades, ajustes de release e correções em produção.
+
+---
+
+📄 **Material de estudo:**  
+[002_COMMIT_E_PULL_REQUEST.MD](https://github.com/fernandoericofilho/turma2/blob/main/documentos/002_COMMIT_E_PULL_REQUEST.MD)
+
+🧪 **Acessar tarefa:**  
+[002_TAREFA_GITFLOW.MD](https://github.com/fernandoericofilho/turma2/blob/main/tarefas/002_TAREFA_GITFLOW.MD)
+
+---
+
+# 🧩 Terceira Etapa – Modelagem de Dados e Normalização
+
+Após entender como projetos evoluem com Git e Gitflow, o próximo passo é começar a trabalhar **fundamentos de banco de dados**.
+
+Nesta etapa você irá aprender um dos conceitos mais importantes da modelagem de dados:
+
+📚 **Normalização de Banco de Dados**
+
+A normalização é utilizada para:
+
+- reduzir redundância de dados  
+- evitar inconsistências  
+- organizar melhor as tabelas  
+- melhorar a integridade das informações  
+
+Você irá estudar as **três primeiras formas normais**:
+
+- **1FN – Primeira Forma Normal**  
+- **2FN – Segunda Forma Normal**  
+- **3FN – Terceira Forma Normal**
+
+Esses conceitos são fundamentais para qualquer desenvolvedor que trabalhe com:
+
+- APIs
+- sistemas backend
+- modelagem de banco
+- engenharia de dados
+
+---
+
+## 📌 Tarefa 03 – Normalização de Banco de Dados
+
+Nesta tarefa você irá:
+
+- analisar tabelas mal estruturadas  
+- identificar problemas de modelagem  
+- aplicar **1FN, 2FN e 3FN**  
+- reorganizar as tabelas corretamente  
+- documentar o resultado da normalização  
+
+Além disso, a atividade reforça práticas importantes como:
+
+- organização de diretórios no repositório  
+- versionamento com Git  
+- commits organizados por etapa de exercício  
+
+---
+
+📄 **Material de estudo:**  
+[003_NORMALIZACAO.MD](https://github.com/fernandoericofilho/turma2/blob/main/documentos/003_NORMALIZACAO.MD)
+
+🧪 **Acessar tarefa:**  
+[003_TAREFA_NORMALIZACAO.MD](https://github.com/fernandoericofilho/turma2/blob/main/tarefas/003_TAREFA_NORMALIZACAO.MD)
 
 ---
 
