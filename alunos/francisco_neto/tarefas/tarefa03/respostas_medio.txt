@@ -1,0 +1,52 @@
+Tabelas Finais (4.png):
+Tabela: Departamentos
+| departamento_nome (PK) | gerente_departamento |
+|---|---|
+| TI | Carlos |
+| RH | Maria |
+
+Tabela: Funcionarios
+| funcionario_id (PK) | nome | departamento_nome (FK) |
+|---|---|---|
+| 1 | João | TI |
+| 2 | Ana | TI |
+| 3 | Pedro | RH |
+
+--------------------------------------------------------------------
+
+Tabelas Finais (5.png):
+Tabela: Categorias
+| categoria_id (PK) | categoria_nome |
+|---|---|
+| 10 | Informática |
+| 20 | Eletrodomésticos |
+
+Tabela: Produtos
+| produto_id (PK) | produto_nome | categoria_id (FK) |
+|---|---|---|
+| 1 | Notebook | 10 |
+| 2 | Mouse | 10 |
+| 3 | Geladeira | 20 |
+
+----------------------------------------------------------------------
+
+Tabelas Finais (6.png):
+Tabela: Alunos
+| aluno_id (PK) | aluno_nome |
+|---|---|
+| 1 | Ana |
+| 2 | Pedro |
+| 3 | Carlos |
+
+Tabela: Cursos
+| curso_id (PK) | curso_nome |
+|---|---|
+| 101 | Engenharia |
+| 102 | Direito |
+
+Tabela: Matriculas
+| aluno_id (FK/PK) | curso_id (FK/PK) |
+|---|---|
+| 1 | 101 |
+| 2 | 101 |
+| 3 | 102 |
