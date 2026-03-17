@@ -1,0 +1,96 @@
+Tabelas Finais (7.png):
+Tabela: Clientes
+| cliente_id (PK) | cliente_nome | cliente_cidade |
+|---|---|---|
+| 10 | João | Recife |
+| 11 | Maria | São Paulo |
+
+| produto_id (PK) | produto_nome | preco |
+|---|---|---|
+| 100 | Notebook | 4000 |
+| 101 | Mouse | 50 |
+| 102 | Teclado | 120 |
+
+| pedido_id (PK) | cliente_id (FK) |
+|---|---|
+| 1 | 10 |
+| 2 | 11 |
+
+| pedido_id (FK/PK) | produto_id (FK/PK) |
+|---|---|
+| 1 | 100 |
+| 1 | 101 |
+| 2 | 102 |
+
+--------------------------------------------------
+
+Tabelas Finais (8.png):
+Tabela: Lojas
+| loja_nome (PK) | loja_cidade |
+|---|---|
+| Loja Centro | Recife |
+| Loja Norte | São Paulo |
+
+| venda_id (PK) | vendedor_nome | loja_nome (FK) |
+|---|---|---|
+| 1 | Carlos | Loja Centro |
+| 2 | Carlos | Loja Centro |
+| 3 | Ana | Loja Norte |
+
+----------------------------------------------------
+
+Tabelas Finais (9.png):
+Tabela: Alunos
+| aluno_id (PK) | aluno_nome |
+|---|---|
+| 1 | Ana |
+| 2 | Pedro |
+| 3 | Carlos |
+
+Tabela: Disciplinas
+| disciplina (PK) | professor |
+|---|---|
+| Banco de Dados | Marcos |
+| Redes | Carla |
+
+Tabela: Aluno_Disciplina
+| aluno_id (FK/PK) | disciplina (FK/PK) |
+|---|---|
+| 1 | Banco de Dados |
+| 2 | Banco de Dados |
+| 3 | Redes |
+
+----------------------------------------------------
+
+Tabelas Finais (10.png):
+Tabela: Clientes
+| cliente_email (PK) | cliente_nome |
+|---|---|
+| joao@email.com | João |
+| ana@email.com | Ana |
+
+Tabela: Categorias
+| categoria_nome (PK) |
+|---|
+| Informática |
+| Eletrodomésticos |
+
+Tabela: Produtos
+| produto_nome (PK) | categoria_nome (FK) |
+|---|---|
+| Notebook | Informática |
+| Mouse | Informática |
+| Geladeira | Eletrodomésticos |
+
+Tabela: Pedidos
+| pedido_id (PK) | cliente_email (FK) |
+|---|---|
+| 1 | joao@email.com |
+| 2 | ana@email.com |
+
+Tabela: Pedido_Itens
+| pedido_id (FK/PK) | produto_nome (FK/PK) |
+|---|---|
+| 1 | Notebook |
+| 1 | Mouse |
+| 2 | Geladeira |
