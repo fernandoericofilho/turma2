@@ -94,3 +94,12 @@ Tabela: Pedido_Itens
 | 1 | Notebook |
 | 1 | Mouse |
 | 2 | Geladeira |
+
+Identifique dependências funcionais:
+
+Parcial: cliente_nome e cliente_email dependem só do pedido_id. categoria depende só do produto_nome.
+
+Transitiva: cliente_nome depende de cliente_email (ou vice-versa).
+
+Normalize até 3FN:
+Criamos tabelas independentes para evitar repetição de quem é o dono do email, qual é a categoria do produto e quem fez o pedido.
