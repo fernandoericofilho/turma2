@@ -1,1 +1,0 @@
-Ola! Meu nome é suetony filho, sou de São José do Sabugi-pb, hoje pertenço ao segundo ano do ensino medio fazendo o curso integrado de informático. Como objetivo profissional tenho o aprendizado mais aprofundado sobre o desenvolvimento e aplicações do meio digital, hoje para evoluir prático o que aprendo no curso integrado, uma característica forte minha é a proatividade.
