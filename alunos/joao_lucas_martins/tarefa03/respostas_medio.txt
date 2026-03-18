@@ -1,0 +1,50 @@
+Exercício 4 — Funcionários e Departamento
+Tabela inicial:
+
+funcionario_id	nome	departamento	gerente_departamento
+1	João	TI	Carlos
+2	Ana	TI	Carlos
+3	Pedro	RH	Maria
+Perguntas:
+1.Existe dependência transitiva?
+Sim, gerente_departamento depende de departamento, e não de funcionário
+
+2.A tabela está na 3FN?
+Não
+
+3.Como separar corretamente?
+Criar a tabela departamento, com as colunas departamento e gerente, na tabela
+funcionário adiciona a chave estrangeira departamento_id
+
+
+Exercício 5 — Produtos e Categoria
+Tabela inicial:
+
+produto_id	produto_nome	categoria_id	categoria_nome
+1	Notebook	10	Informática
+2	Mouse	10	Informática
+3	Geladeira	20	Eletrodomésticos
+Perguntas:
+
+1.Qual dependência funcional existe?
+Categoria_nome depende de categoria_id
+
+2.Como ficaria a tabela na 3FN?
+Cria-se a tabela categoria com as colunas categoria_id e categoria_nome, e na
+tabela produto adiciona a chave estrangeira categoria_id
+
+
+Exercício 6 — Matrícula de alunos
+Tabela inicial:
+
+aluno_id	aluno_nome	curso_id	curso_nome
+1	Ana	101	Engenharia
+2	Pedro	101	Engenharia
+3	Carlos	102	Direito
+Perguntas:
+
+1.Quais atributos dependem de quais?
+curso_id depende de aluno e curso_nom depende de curso_id
+2.Separe as tabelas corretamente.
+Cria-se a tabele curso com as colunas curso_id e curso_nome, e na tabela
+aluno adiciona a chave estrangeira curso_id
