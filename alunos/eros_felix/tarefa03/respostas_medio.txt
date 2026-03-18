@@ -1,0 +1,12 @@
+Exercicio 4:
+- 1: Sim, funcionario_id esta ligado ao departamento e departamento eh dependente do gerente_departamento, entao indiretamente funcionario_id eh dependete de gerente_departamento.
+- 2: Nao, pois existe dependencia transitiva.
+- 3: Separacao em duas tabelas, uma com os atributos do funcionario e outra com do departamento.
+
+Exercicio 5: 
+- 1: Existe dependencia transitiva em produto_id com categoria_id e produto_nome, ou seja, produto_id dependente de categoria_nome indiretamente
+- 2: Criar tabela Produto com produto_id, produto_nome e categoria_id e outra tabela Categoria com categoria_id e categoria_nome
+
+Exercicio 5: 
+- 1: Mesma logica da questao anterior, existe dependencia transitiva em aluno_id com curso_id e curso_nome, ou seja, aluno_id dependente de curso_nome indiretamente
+- 2: Criar tabela Aluno com aluno_id, aluno_nome e curso_id e outra tabela Curso com curso_id e curso_nome
