@@ -1,0 +1,17 @@
+Exercicio 1:
+- 1: Nao esta pois ha existencia de vallores multivalorados
+- 2: Criando uma tabela para os telefones, por exemplo: telefones_clientes
+
+Exercicio 2:
+- 1: Violacao da regra 1FN por ter existencia de valores multivalorados 
+- 2:pedido_id | cliente | produto
+    1         | João    | arroz
+    1         | João    | feijão
+    2         | Maria   | leite
+
+Exercicio 3:
+- 1: Celulas da tabela com mais de um valor 
+- 2:curso_id | curso_nome | aluno    // Ou criando uma tabela para curso e aluno e uma tabela para sua relacao
+    1         | Java       | Ana
+    1         | Java       | Carlos
+    1         | Java       | Pedro
