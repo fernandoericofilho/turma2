@@ -1,0 +1,119 @@
+Exercício 7 — Pedido completo
+Tabela inicial:
+
+pedido_id	cliente_nome	cliente_cidade	produto_nome	preco
+1	João	Recife	Notebook	4000
+1	João	Recife	Mouse	50
+2	Maria	São Paulo	Teclado	120
+Perguntas:
+
+1.Identifique as dependências funcionais
+cliente_nome depende de pedido_id
+
+cliente_cidade depende de cliente_nome
+
+preco depende de produto_nome
+
+2.Normalize até 3FN
+Cria-se a tabela cliente
+| cliente_id | nome | cidade |
+
+Cria-se a tabela produto
+| produto_id | nome | preco
+
+Cria-se a tabela pedido_produto
+| id | pedido_id | produto_id |
+
+Corrigi a table pedido
+| pedido_id | cliente_id |
+
+
+
+
+Exercício 8 — Venda e vendedor
+Tabela inicial:
+
+venda_id	vendedor_nome	loja_nome	loja_cidade
+1	Carlos	Loja Centro	Recife
+2	Carlos	Loja Centro	Recife
+3	Ana	Loja Norte	São Paulo
+Perguntas:
+1.Existe dependência transitiva?
+vendedor_nome depende de venda_id
+loja_nome depende de venda_id
+loja_cidade depende de loja_nome
+
+2.Como dividir as tabelas?
+cria a tabela loja
+| loja_id | nome | cidade |
+
+cria a tabela vendedor
+| vendedor_id | nome |
+
+tabeka venda
+| venda_id | vendedor_id | loja_id |
+
+
+Exercício 9 — Sistema de universidade
+Tabela inicial:
+
+aluno_id	aluno_nome	disciplina	professor
+1	Ana	Banco de Dados	Marcos
+2	Pedro	Banco de Dados	Marcos
+3	Ana	Redes	Carla
+Perguntas:
+
+Existe relação N:N?
+Sim, um aluno pode ter muitas disciplinas e um disciplina pode ter muitos alunos
+
+Quais tabelas devem existir?
+Tabela professor
+| professor_id | nome |
+
+Tabela disciplina
+| disciplina_id | nome | professor_id |
+
+Tabela aluno_disciplina
+| aluno_id | disciplina_id |
+
+Tabela aluno
+| aluno_id | nome
+
+
+
+Exercício 10 — Sistema de e-commerce
+Tabela inicial:
+
+pedido_id	cliente_nome	cliente_email	produto_nome	categoria
+1	João	joao@email.com	Notebook	Informática
+1	João	joao@email.com	Mouse	Informática
+2	Ana	ana@email.com	Geladeira	Eletrodomésticos
+Perguntas:
+
+Identifique dependências funcionais?
+cliente_nome depende de pedido_id
+
+cliente_email depende de cliente_nome
+
+produto_nome depende de pedido_id
+
+categoria depende de produto_nome
+
+Normalize até 3FN ?
+Tabela categoria
+| categoria_id | nome |
+
+Tabela produto
+| produto_id | nome | categoria_id |
+
+Tabela pedido_produto
+| pedido_id | produto_id |
+
+Tabela cliente
+| cliente_id | nome | email |
+
+Tabela pedido
+| pedido_id | cliente_id |
+
+Quais seriam as tabelas finais?
+

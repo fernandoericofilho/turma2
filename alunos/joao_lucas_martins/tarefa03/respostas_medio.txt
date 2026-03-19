@@ -44,7 +44,7 @@ aluno_id	aluno_nome	curso_id	curso_nome
 Perguntas:
 
 1.Quais atributos dependem de quais?
-curso_id depende de aluno e curso_nom depende de curso_id
+curso_id depende de aluno e curso_nome depende de curso_id
 2.Separe as tabelas corretamente.
 Cria-se a tabele curso com as colunas curso_id e curso_nome, e na tabela
 aluno adiciona a chave estrangeira curso_id
