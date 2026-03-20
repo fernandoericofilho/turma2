@@ -1,0 +1,26 @@
+## Exercício 1 — Telefones de Cliente
+
+1. A tabela está na 1FN?
+Não, pois viola o princípio da atomicidade dos atributos.
+O campo "telefones" armazena múltiplos valores para um único registro.
+
+2. Como modelar corretamente os telefones?
+É necessário separar os dados em tabelas distintas, de modo que cada campo tenha apenas um valor. Assim, deve-se criar uma tabela Cliente e outra Telefone, relacionando-as por uma chave estrangeira, onde cada telefone fica em um registro separado.
+
+## Exercício 2 — Pedido com vários produtos
+
+1. Qual problema de normalização existe?
+- A coluna produtos tem múltiplos valores.
+- Dependência parcial: cliente depende só de pedido_id, e não do produto.
+
+2. Como ficaria a estrutura após aplicar 1FN?
+Cada célula tem um único valor atômico, cada produto em um registro separado.
+
+## Exercício 3 — Curso e alunos
+
+1. Qual regra da 1FN está sendo violada?
+A coluna alunos tem múltiplos valores (lista separada por vírgula), violando o princípio da atomicidade.
+
+2. Como ficaria a modelagem correta?
+- Deve separar os dados para que cada campo tenha apenas um registro (1FN).
+- Eliminar as dependências parciais: criar tabelas curso, alunos e curso_aluno. (2FN)
