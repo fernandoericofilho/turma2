@@ -1,0 +1,12 @@
+Exercício 4 — Funcionários e Departamento
+1- Sim.
+2- Não.
+3- Anexo <imagens/4.png>
+
+Exercício 5 — Produtos e Categoria
+1- Sim.
+2- Anexo <imagens/5.png>
+
+Exercício 6 — Matrícula de alunos
+1- aluno_id -> aluno_nome e curso_id -> curso_nome
+2- Anexo <imagens/6.png>

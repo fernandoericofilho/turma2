@@ -1,0 +1,11 @@
+Exercício 1 — Telefones de Cliente
+1- Não.
+2- Anexo <imagens/1.png>
+
+Exercício 2 — Pedido com vários produtos
+1- Nome do cliente e os produtos separados por vírgula na mesma entidade.
+2- Anexo <imagens/2.png>
+
+Exercício 3 — Curso e alunos
+1- Nome dos alunos separados por vírgula e na mesma entidade do curso.
+2- Anexo <imagens/3.png>
