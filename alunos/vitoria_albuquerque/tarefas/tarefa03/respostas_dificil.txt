@@ -1,0 +1,39 @@
+## Exercício 7 — Pedido completo
+
+1. Identifique as dependências funcionais
+- cliente_nome e cliente_cidade depende apenas de pedido_id (dependência parcial)
+- O preço é um atributo de produto e não de pedido (dependência transitiva)
+
+2. Normalize até 3FN
+- Separar as tabelas em Pedido > Itens_Pedido > Produto
+- Separar tabelas para evitar redundância: Cliente > Cidade
+
+## Exercício 8 — Venda e vendedor
+
+1. Existe dependência transitiva?
+Sim. A cidade_loja é uma propriedade da loja, não da Venda.
+
+2. Como dividir as tabelas?
+Separar tabelas: Venda, Loja, Vendedor e Cidade para evitar dependências transitivas e redundâncias.
+
+## Exercício 9 — Sistema de universidade
+
+1. Existe relação N:N?
+Sim. Aluno cursar várias disciplinas e uma disciplina pode ter vários alunos.
+
+2. Quais tabelas devem existir?
+Aluno, Professor, Disciplina e Disciplina_Aluno (tabela associativa)
+
+## Exercício 10 — Sistema de e-commerce
+
+1. Identifique dependências funcionais
+- categoria depende de produto (dependência transitiva)
+- o cliente pertence ao pedido, não ao produto
+
+2. Normalize até 3FN
+1FN - Dados são atômicos
+2FN - Colunas cliente_nome e cliente_email depende só de pedido_id, não da chave inteira (pedido_id, produto_nome)
+3FN - categoria depende de produto_nome, não da PK do produto (dependência transitiva).
+
+3. Quais seriam as tabelas finais?
+Clente, Pedido, Itens_Pedido, Produto, Categoria
