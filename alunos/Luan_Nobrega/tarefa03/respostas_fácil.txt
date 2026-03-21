@@ -23,3 +23,33 @@ A modelagem adequada seria:
 - Criar uma tabela cursos, com chave primária curso_id.
 - Criar uma tabela alunos, com chave primária aluno_id.
 - Criar uma tabela intermediária curso_aluno, que relaciona as duas tabelas por meio das chaves estrangeiras curso_id e aluno_id.
+
+
+Exercício 4 — Funcionários e Departamento
+1. Existe dependência transitiva?
+Sim.
+
+2. A tabela está na 3FN?
+Não. Pois Gerente está vinculado ao departamento e não a funcionário.
+
+3. Como separar corretamente?
+Dividir a tabela em duas e criar uma relação entre elas.
+- Tabela Funcionário que terá funcionário_id, nome e departamento_id.
+- Tabela Departamentos que terá departamento_id, nome_departamento, gerente.
+
+
+Exercício 5 — Produtos e Categoria
+1. Qual dependência funcional existe?
+"categoria_id" não é chave primária para essa tabela. Ela é chave primária da tabela "Categorias" que deve ser criada.
+2. Como ficaria a tabela na 3FN?
+- Criar a tabela "produtos" com a chave primária "produto_id", "produto_nome" e que receberá a chave extrangeira "categoria_id".
+- Criar a tabela Categorias com a chave primária "categoria_id" e "categoria_nome"
+
+
+Exercício 6 — Matrícula de alunos
+1. Quais atributos dependem de quais?
+"aluno_nome" e "curso_id" depende de "aluno_id" e "curso_nome" depende de "curso_id".
+
+2. Separe as tabelas corretamente.
+-Tabela Alunos com "aluno_id", "aluno_nome" e a chave extrangeira "curso_id".
+- Tabela Cursos com "curso_id" e "curso_nome".
