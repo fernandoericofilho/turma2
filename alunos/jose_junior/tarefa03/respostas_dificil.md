@@ -60,7 +60,7 @@ Sim, pois uma disciplina pode possuir um ou vários alunos, assim como um aluno 
 
 **2. Quais tabelas devem existir?**
 
-A tabela inicial é dividida em 4 tabelas (`Alunos`, `Matriculas`, `Disciplinas` e `Professores`), evitando assim a replicação desnecessárias de dados e a presença de dependências funcionais e transitivas.
+A tabela inicial é dividida em 4 tabelas (`Alunos`, `Disciplinas`, `Professores` e `Alunos_Disciplinas`), evitando assim a replicação desnecessárias de dados e a presença de dependências funcionais e transitivas.
 
 ![Modelagem do Exercício 09](imagens/exercicio09.PNG)
 

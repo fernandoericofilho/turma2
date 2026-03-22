@@ -56,7 +56,7 @@ A tabela possui um atributo multivalorado (`alunos`) violando a 1FN que determin
 
 **2. Como ficaria a modelagem correta?**
 
-A tabela inicial seria transformada em duas tabelas `Alunos` e `Cursos`, cada uma tendo os seus respectivos atributos (`id` e `nome`), por se tratar de uma relação **N-N** ou **Muitos para Muitos** (Um curso pode ter muitos alunos e cada aluno pode se matricular em muitos cursos), é criada uma tabela associativa (`Matrículas`).
+A tabela inicial seria transformada em duas tabelas `Alunos` e `Cursos`, cada uma tendo os seus respectivos atributos (`id` e `nome`), por se tratar de uma relação **N-N** ou **Muitos para Muitos** (Um curso pode ter muitos alunos e cada aluno pode se matricular em muitos cursos), é criada uma tabela associativa (`Alunos_Cursos`).
 
 ![Modelagem do Exercício 03](imagens/exercicio03.PNG)
 
