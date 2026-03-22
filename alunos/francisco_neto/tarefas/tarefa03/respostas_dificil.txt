@@ -1,105 +1,151 @@
-Tabelas Finais (7.png):
-Tabela: Clientes
+Exercício 7 — Pedido completo
+
+Identifique as dependências funcionais:
+
+cliente_nome e cliente_cidade dependem de pedido_id (mas pertencem ao cliente).
+
+cliente_cidade depende de cliente_nome.
+
+preco depende de produto_nome, não do pedido_id.
+
+Normalize até 3FN:
+
+Tabelas Finais:
+
+Tabela: Cliente
 | cliente_id (PK) | cliente_nome | cliente_cidade |
 |---|---|---|
-| 10 | João | Recife |
-| 11 | Maria | São Paulo |
+| 1 | João | Recife |
+| 2 | Maria | São Paulo |
 
-| produto_id (PK) | produto_nome | preco |
-|---|---|---|
-| 100 | Notebook | 4000 |
-| 101 | Mouse | 50 |
-| 102 | Teclado | 120 |
-
+Tabela: Pedido
 | pedido_id (PK) | cliente_id (FK) |
 |---|---|
-| 1 | 10 |
-| 2 | 11 |
+| 1 | 1 |
+| 2 | 2 |
 
-| pedido_id (FK/PK) | produto_id (FK/PK) |
-|---|---|
-| 1 | 100 |
-| 1 | 101 |
-| 2 | 102 |
-
---------------------------------------------------
-
-Tabelas Finais (8.png):
-Tabela: Lojas
-| loja_nome (PK) | loja_cidade |
-|---|---|
-| Loja Centro | Recife |
-| Loja Norte | São Paulo |
-
-| venda_id (PK) | vendedor_nome | loja_nome (FK) |
+Tabela: Produto
+| produto_id (PK) | produto_nome | preco |
 |---|---|---|
-| 1 | Carlos | Loja Centro |
-| 2 | Carlos | Loja Centro |
-| 3 | Ana | Loja Norte |
+| 1 | Notebook | 4000 |
+| 2 | Mouse | 50 |
+| 3 | Teclado | 120 |
 
-----------------------------------------------------
+Tabela: Itens_Pedido
+| item_id (PK) | pedido_id (FK) | produto_id (FK) |
+|---|---|---|
+| 1 | 1 | 1 |
+| 2 | 1 | 2 |
+| 3 | 2 | 3 |
 
-Tabelas Finais (9.png):
-Tabela: Alunos
+Exercício 8 — Venda e vendedor
+
+Existe dependência transitiva?
+
+Sim, loja_cidade depende de loja_nome, que depende de vendedor_nome.
+
+Como dividir as tabelas?
+
+Tabelas Finais:
+
+Tabela: Venda
+| venda_id (PK) | vendedor_id (FK) |
+|---|---|
+| 1 | 1 |
+| 2 | 1 |
+| 3 | 2 |
+
+Tabela: Vendedor
+| vendedor_id (PK) | vendedor_nome | loja_id (FK) |
+|---|---|---|
+| 1 | Carlos | 1 |
+| 2 | Ana | 2 |
+
+Tabela: Loja
+| loja_id (PK) | loja_nome | loja_cidade |
+|---|---|---|
+| 1 | Loja Centro | Recife |
+| 2 | Loja Norte | São Paulo |
+
+Exercício 9 — Sistema de universidade
+
+Existe relação N:N?
+
+Sim, um aluno pode ter várias disciplinas e uma disciplina pode ter vários alunos.
+
+Quais tabelas devem existir?
+
+Tabelas Finais:
+
+Tabela: Aluno
 | aluno_id (PK) | aluno_nome |
 |---|---|
 | 1 | Ana |
 | 2 | Pedro |
-| 3 | Carlos |
 
-Tabela: Disciplinas
-| disciplina (PK) | professor |
+Tabela: Professor
+| professor_id (PK) | professor_nome |
 |---|---|
-| Banco de Dados | Marcos |
-| Redes | Carla |
+| 1 | Marcos |
+| 2 | Carla |
 
-Tabela: Aluno_Disciplina
-| aluno_id (FK/PK) | disciplina (FK/PK) |
-|---|---|
-| 1 | Banco de Dados |
-| 2 | Banco de Dados |
-| 3 | Redes |
+Tabela: Disciplina
+| disciplina_id (PK) | disciplina_nome | professor_id (FK) |
+|---|---|---|
+| 1 | Banco de Dados | 1 |
+| 2 | Redes | 2 |
 
-----------------------------------------------------
+Tabela: Matricula
+| matricula_id (PK) | aluno_id (FK) | disciplina_id (FK) |
+|---|---|---|
+| 1 | 1 | 1 |
+| 2 | 2 | 1 |
+| 3 | 1 | 2 |
 
-Tabelas Finais (10.png):
-Tabela: Clientes
-| cliente_email (PK) | cliente_nome |
-|---|---|
-| joao@email.com | João |
-| ana@email.com | Ana |
-
-Tabela: Categorias
-| categoria_nome (PK) |
-|---|
-| Informática |
-| Eletrodomésticos |
-
-Tabela: Produtos
-| produto_nome (PK) | categoria_nome (FK) |
-|---|---|
-| Notebook | Informática |
-| Mouse | Informática |
-| Geladeira | Eletrodomésticos |
-
-Tabela: Pedidos
-| pedido_id (PK) | cliente_email (FK) |
-|---|---|
-| 1 | joao@email.com |
-| 2 | ana@email.com |
-
-Tabela: Pedido_Itens
-| pedido_id (FK/PK) | produto_nome (FK/PK) |
-|---|---|
-| 1 | Notebook |
-| 1 | Mouse |
-| 2 | Geladeira |
+Exercício 10 — Sistema de e-commerce
 
 Identifique dependências funcionais:
 
-Parcial: cliente_nome e cliente_email dependem só do pedido_id. categoria depende só do produto_nome.
+cliente_nome depende de cliente_email.
 
-Transitiva: cliente_nome depende de cliente_email (ou vice-versa).
+categoria depende de produto_nome, não do pedido.
 
-Normalize até 3FN:
-Criamos tabelas independentes para evitar repetição de quem é o dono do email, qual é a categoria do produto e quem fez o pedido.
+Dados de cliente e produto não devem depender de pedido_id.
+
+Normalize até 3FN
+
+Quais seriam as tabelas finais?
+
+Tabelas Finais:
+
+Tabela: Cliente
+| cliente_id (PK) | cliente_nome | cliente_email |
+|---|---|---|
+| 1 | João | joao@email.com |
+| 2 | Ana | ana@email.com |
+
+Tabela: Pedido
+| pedido_id (PK) | cliente_id (FK) |
+|---|---|
+| 1 | 1 |
+| 2 | 2 |
+
+Tabela: Categoria
+| categoria_id (PK) | categoria_nome |
+|---|---|
+| 1 | Informática |
+| 2 | Eletrodomésticos |
+
+Tabela: Produto
+| produto_id (PK) | produto_nome | categoria_id (FK) |
+|---|---|---|
+| 1 | Notebook | 1 |
+| 2 | Mouse | 1 |
+| 3 | Geladeira | 2 |
+
+Tabela: Itens_Pedido
+| item_id (PK) | pedido_id (FK) | produto_id (FK) |
+|---|---|---|
+| 1 | 1 | 1 |
+| 2 | 1 | 2 |
+| 3 | 2 | 3 |
