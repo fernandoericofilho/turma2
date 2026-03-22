@@ -1,0 +1,79 @@
+Exercício 7:
+
+1. Identifique as dependências funcionais
+
+Dependências funcionais:
+cliente_nome determina cliente_cidade
+produto_nome determina preco
+
+2. Normalize até 3FN
+
+Normalização até 3FN:
+
+Clientes (cliente_id, nome, cidade)
+Produtos (produto_id, nome, preco)
+Pedidos (pedido_id, cliente_id)
+Pedido_Produtos (id, pedido_id, produto_id)
+
+----------------------------------------------------------------------
+
+Exercício 8:
+
+1. Existe dependência transitiva?
+
+Sim, existe dependência transitiva: loja_nome determina loja_cidade.
+
+2. Como dividir as tabelas?
+
+Separação correta:
+
+Vendedores (vendedor_id, nome)
+Lojas (loja_id, nome, cidade)
+Vendas (venda_id, vendedor_id, loja_id)
+
+----------------------------------------------------------------------
+
+Exercício 9:
+
+1. Existe relação N:N?
+
+Sim, existe relação N:N entre alunos e disciplinas.
+
+2. Quais tabelas devem existir?
+
+Tabelas:
+
+Alunos (aluno_id, nome)
+Disciplinas (disciplina_id, nome, professor)
+Matriculas (id, aluno_id, disciplina_id)
+
+----------------------------------------------------------------------
+
+Exercício 10:
+
+1. Identifique dependências funcionais
+
+Dependências funcionais:
+
+pedido_id → cliente_nome, cliente_email
+cliente_nome → cliente_email
+produto_nome → categoria
+
+2. Normalização até a 3FN:
+
+A tabela original apresenta dependências transitivas e redundância de dados.
+
+- cliente_nome determina cliente_email (dependência transitiva)
+- produto_nome determina categoria (dependência transitiva)
+
+Para atingir a 3FN, foi necessário separar as entidades em tabelas distintas, garantindo que todos os atributos dependam apenas da chave primária.
+
+3. Quais seriam as tabelas finais?
+
+Tabelas finais:
+
+Clientes (cliente_id, nome, email)
+Categorias (categoria_id, nome)
+Produtos (produto_id, nome, categoria_id)
+Pedidos (pedido_id, cliente_id)
+Pedido_Produtos (id, pedido_id, produto_id)
