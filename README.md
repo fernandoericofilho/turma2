@@ -183,3 +183,24 @@ Você não está apenas fazendo exercícios.
 Você está começando a construir sua identidade como Desenvolvedor(a).
 
 Organização, clareza e consistência serão diferenciais ao longo de toda a jornada.
+
+---
+
+## 📌 Tarefa 04 – Modelagem e Consultas
+
+Nesta tarefa você irá praticar:
+
+- Criação de tabelas com relacionamentos
+- Definição de PK e FK
+- Identificação de cardinalidade
+- Estruturação de tabelas N:N
+- Escrita de JOINs
+- Pensamento de modelagem real
+
+---
+
+📄 **Material de estudo:**  
+[004_MODELAGEM_E_CONCEITOS.md](https://github.com/fernandoericofilho/turma2/blob/main/documentos/004_MODELAGEM_E_CONCEITOS.md)
+
+🧪 **Acessar tarefa:**  
+[004_TAREFA_MODELAGEM.md](https://github.com/fernandoericofilho/turma2/blob/main/tarefas/004_TAREFA_MODELAGEM.md)
