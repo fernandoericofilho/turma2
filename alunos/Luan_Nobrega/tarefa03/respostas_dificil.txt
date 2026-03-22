@@ -1,0 +1,36 @@
+Exercício 7 — Pedido completo
+1. Identifique as dependências funcionais.
+- cliente_nome e cliente_cidade dependem apenas de pedido_id.
+- produto_nome e preco independem do cliente e do pedido.
+
+2. Normalize até 3FN.
+- Criar uma tabela "Clientes" com a PK "cliente_id", "cliente_nome" e ""cliente_cidade."
+- Criar a tabela "Produtos" com a PK "produto_id", "produto_nome" e "preco".
+- Criar a tabela "Pedidos" com a PK "pedido_id" e as FK "cliente_id" e "produto_id".
+
+
+Exercício 8 — Venda e vendedor
+1. Existe dependência transitiva?
+Sim, a dependência transitiva ocorre porque a cidade da loja depende do nome da loja, e não diretamente da venda.
+
+2. Como dividir as tabelas?
+Devemos separar os dados da venda dos dados cadastrais da loja.
+
+
+Exercício 9 — Sistema de universidade
+1. Existe relação N:N?
+Sim, a relação Aluno e disciplinas é muitos para muitos. Um aluno pode está matriculado em várias disciplinas e uma disciplina pode ter vários alunos matriculados.
+
+2. Quais tabelas devem existir?
+Tabelas: Alunos, Matricula e Disciplinas.
+
+
+Exercício 10 — Sistema de e-commerce
+1. Identifique dependências funcionais.
+- cliente_nome e cliente_email não dependem do produto que está sendo comprado.
+- A categoria depende do produto_nome, que por sua vez depende do ID do produto.
+- O e-mail do João e o nome dele estão repetidos desnecessariamente para cada item que ele compra no mesmo pedido.
+
+2. Normalize até 3FN.
+3. Quais seriam as tabelas finais?
+Para organizar precisamos separar as entidades. Devem existir quatro tabelas principais (Clientes, Produtos, Categorias e Pedidos) para garantir que cada dado tenha apenas sua chave primária.
