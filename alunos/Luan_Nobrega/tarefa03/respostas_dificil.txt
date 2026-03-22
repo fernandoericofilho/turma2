@@ -14,7 +14,7 @@ Exercício 8 — Venda e vendedor
 Sim, a dependência transitiva ocorre porque a cidade da loja depende do nome da loja, e não diretamente da venda.
 
 2. Como dividir as tabelas?
-Devemos separar os dados da venda dos dados cadastrais da loja.
+Devemos separar os dados da venda, dados cadastrais da loja e do vendedor.
 
 
 Exercício 9 — Sistema de universidade
@@ -22,7 +22,7 @@ Exercício 9 — Sistema de universidade
 Sim, a relação Aluno e disciplinas é muitos para muitos. Um aluno pode está matriculado em várias disciplinas e uma disciplina pode ter vários alunos matriculados.
 
 2. Quais tabelas devem existir?
-Tabelas: Alunos, Matricula e Disciplinas.
+Tabelas: Aluno, Matricula, aluno_disciplina e Disciplina.
 
 
 Exercício 10 — Sistema de e-commerce

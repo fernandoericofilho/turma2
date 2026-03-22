@@ -13,7 +13,7 @@ Foi necessário criar:
 - Uma tabela clientes, com chave primária cliente_id.
 - Uma tabela pedidos, com chave primária pedido_id, relacionada à tabela clientes por meio da chave estrangeira cliente_id.
 - Uma tabela produtos, com chave primária produto_id.
-- Uma tabela itens_pedido, que recebe as chaves estrangeiras pedido_id e produto_id, estabelecendo a relação entre pedidos e produtos.
+- Uma tabela Pedidos_produtos, que recebe as chaves estrangeiras pedido_id e produto_id, estabelecendo a relação entre pedidos e produtos.
 
 Exercício 3 — Curso e Alunos
 1. Qual regra da 1FN está sendo violada?
