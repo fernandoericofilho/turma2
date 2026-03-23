@@ -3,6 +3,10 @@
  */
 \c turma2;
 
+/*
+ * Cria as tabelas
+ */
+
 CREATE TABLE produto (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
