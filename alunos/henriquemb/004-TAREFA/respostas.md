@@ -70,3 +70,10 @@ FK: funcionário (departamento_id)
 ### 3. Modele as tabelas
 ![img_schema_exercicios-intermediarios.png](./img/schema_exercicios-intermediarios.png)
 ![img_003-exercicio_funcionario-departamento.png](./img/003-exercicio_funcionario-departamento.png)
+
+# Exercício 4 — Índices
+### 1. Em quais colunas você criaria índices?
+Criaria um índice na coluna ``cliente_id``
+
+### 2. Por quê?
+É a coluna que realiza o vínculo com o cliente, e é a coluna que será utilizada em consultas e joins
