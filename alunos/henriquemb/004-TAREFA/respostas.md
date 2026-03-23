@@ -95,3 +95,32 @@ aluno, disciplina, professor, aluno_disciplina, professor_disciplina
 ### 4. Monte o DER (imagem)
 ![img_schema_exercicios-dificeis.png](./img/schema_exercicios-dificeis.png)
 ![img_005-exercicio_alunos-disciplina.png](./img/005-exercicio_alunos-disciplina.png)
+
+# Exercício 6 — Joins
+### 1. Faça: INNER JOIN e LEFT JOIN
+```sql
+-- INNER JOIN
+SELECT
+    cliente.id AS cliente_id,
+    cliente.nome AS cliente_nome,
+    pedido.id AS pedido_id
+FROM cliente
+         INNER JOIN pedido ON
+    cliente.id = pedido.cliente_id
+
+-- LEFT JOIN
+SELECT
+    cliente.id AS cliente_id,
+    cliente.nome AS cliente_nome,
+    pedido.id AS pedido_id
+FROM cliente
+LEFT JOIN pedido ON
+    cliente.id = pedido.cliente_id
+```
+
+### 2. Explique a diferença
+O ``INNER JOIN`` retorna apenas os clientes que possuem pedidos.
+![img_006-exercicio_cliente_com_pedido.png](./img/006-exercicio_cliente_com_pedido.png)
+
+O ``LEFT JOIN`` retorna todos os clientes independente se ele possui pedidos ou não.
+![img_006-exercicio_cliente_pedido.png](./img/006-exercicio_cliente_pedido.png)
