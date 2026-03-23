@@ -77,3 +77,21 @@ Criaria um índice na coluna ``cliente_id``
 
 ### 2. Por quê?
 É a coluna que realiza o vínculo com o cliente, e é a coluna que será utilizada em consultas e joins
+
+# Exercício 5 — Sistema Escolar
+### 1. Identifique relacionamentos
+* aluno - aluno_disciplina: 1:N
+* disciplina - aluno_disciplina: 1:N
+* professor - professor_disciplina: 1:N
+* disciplina - professor_disciplina: 1:N
+
+### 2. Existe N:N?
+* aluno - disciplina: N:N
+* professor - disciplina: N:N
+
+### 3. Quais tabelas criar?
+aluno, disciplina, professor, aluno_disciplina, professor_disciplina
+
+### 4. Monte o DER (imagem)
+![img_schema_exercicios-dificeis.png](./img/schema_exercicios-dificeis.png)
+![img_005-exercicio_alunos-disciplina.png](./img/005-exercicio_alunos-disciplina.png)
