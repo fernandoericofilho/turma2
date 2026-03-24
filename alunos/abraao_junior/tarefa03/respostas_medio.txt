@@ -1,0 +1,15 @@
+Exercício 4 - Funcionários e Departamentos
+1 - Existe dependência transitiva na coluna gerente_departamento que não depende do funcionario_id.
+2 - A tabela inicial não está na 3FN devido à dependência transitiva.
+3 - Para corrigir essa tabela deve-se criar uma nova tabela para os atributos não-chave que dependem de outro atributo não-chave.
+
+
+Exercício 5 - Produtos e Categoria
+1 - produto_nome depende do produto_id e categoria_nome depende de categoria_id.
+2 - Para deixar essa tabela na 3FN é preciso criar duas novas tabelas: produto e categoria; separando assim, o atributo
+não-chave que depende de outro atributo não-chave.
+
+Exercício 6 - Matrícula de Alunos
+1 - aluno_nome depende de aluno_id e curso_nome depende de curso_id.
+2 - Divide a tabela inicial em duas: uma tabela de alunos com os atributos aluno-id e nome_aluno e outra tabela de curso
+com os atributos curso_id e curso_nome; cria-se também uma nova tabela de matrícula com aluno_id(FK) e curso_id(FK).

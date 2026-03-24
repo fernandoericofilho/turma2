@@ -1,0 +1,13 @@
+Exercício 1 - Telefones de Clientes
+1 - A tabela inicial não está na 1FN pois a coluna telefone possui mais de um valor.
+2 - Para corrigir essa tabela deve-se criar duas novas tabelas (cliente e telefones) para garantir que não haja atributos multivalorados.
+
+
+Exercício 2 - Pedido com vários produtos
+1 - Na tabela inicial existem atributos multivalorados e atributos não-chave que não dependem da chave primária.
+2 - Para aplicar a 1FN nessa tabela é necessário criar uma tabela de produtos para ter apenas um valor por coluna.
+
+
+Exercício 3 - Curso e alunos
+1 - A regra da atomicidade dos valores está sendo violada nessa tabela.
+2 - Deve-se criar três tabelas: curso, aluno e matricula. Na tabela de matricula teria as colunas curso_id e aluno_id como foreign-key.

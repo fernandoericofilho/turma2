@@ -1,0 +1,31 @@
+Exercício 7 - Pedido completo
+1 - Dependências funcionais: cliente_nome depende do pedido_id; cliente_cidade depende de cliente_nome; preco depende de produto_nome.
+2 - Para normalizar essa tabela até a 3FN é necessário criar outras tabelas:
+Tabela cliente com os atributos: cliente_id, cliente_nome e cliente_cidade;
+Tabela produto com os atributos: produto_id, produto_nome e preco;
+Tabela pedido com os atributos: pedido_id e cliente_id;
+Tabela produto_pedido com os atributos: id, pedido_id, produto_id e preco.
+
+
+Exercício 8 - Venda e vendedor
+1 - loja_cidade é uma dependência transitiva, pois depende de loja_nome e não do atributo chave (venda_id).
+2 - A tabela inicial deve ser dividida em:
+Tabela lojas com os atributos: loja_id, loja_nome e loja_cidade;
+Tabela vendedores com os atributos: vendedor_id, vendedor_nome e loja_id;
+Tabela venda com os atributos: venda_id, vendedor_id e loja_id.
+
+
+Exercício 9 - Sistema de universidade
+1 - Existe uma relação N:N entre aluno e disciplina.
+2 - Deve existir as tabelas: aluno, disciplina, professor e aluno_disciplina (tabela associativa entre aluno e disciplina).
+
+
+Exercício 10 - Sistema de e-commerce
+1 - Dependências funcionais: cliente_nome depende do pedido_id, cliente_email depende de cliente_nome e categoria depende
+de produto_nome.
+2 - Tabela normalizada até a 3FN:
+Tabela clientes com os atributos: cliente_id, cliente_nome e cliente_email;
+Tabela produtos com os atributos: produto_id, produto_nome e categoria_id;
+Tabela categorias com os atributos: categoria_id e cartegoria_nome;
+Tabela pedidos com os atributos: pedido_id e cliente_id;
+Tabela produto_pedido com os atributos: id, produto_id e pedido_id.
