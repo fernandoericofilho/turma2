@@ -1,0 +1,25 @@
+Exercício 1 — Telefones de Cliente
+1. A tabela está na 1FN?
+Não, pois na coluna telefone existem registros com mais de um valor.
+
+2. Como modelar corretamente os telefones?
+Será necessário criar uma nova tabela chamada telefones, com uma chave primária chamada telefone_id, além de adicionar a coluna cliente_id como chave estrangeira para relacionar as duas tabelas.
+
+Exercício 2 — Pedido com vários produtos
+1. Qual problema de normalização existe?
+Na coluna produtos há registros com múltiplos valores, o que viola a 1FN.
+2. Como ficaria a estrutura após aplicar 1FN?
+Foi necessário criar:
+- Uma tabela clientes, com chave primária cliente_id.
+- Uma tabela pedidos, com chave primária pedido_id, relacionada à tabela clientes por meio da chave estrangeira cliente_id.
+- Uma tabela produtos, com chave primária produto_id.
+- Uma tabela Pedidos_produtos, que recebe as chaves estrangeiras pedido_id e produto_id, estabelecendo a relação entre pedidos e produtos.
+
+Exercício 3 — Curso e Alunos
+1. Qual regra da 1FN está sendo violada?
+Na coluna alunos existem registros com múltiplos valores.
+2. Como ficaria a modelagem correta?
+A modelagem adequada seria:
+- Criar uma tabela cursos, com chave primária curso_id.
+- Criar uma tabela alunos, com chave primária aluno_id.
+- Criar uma tabela intermediária curso_aluno, que relaciona as duas tabelas por meio das chaves estrangeiras curso_id e aluno_id.
