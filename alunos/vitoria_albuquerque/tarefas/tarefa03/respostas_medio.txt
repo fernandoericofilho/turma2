@@ -1,0 +1,28 @@
+## Exercício 4 — Funcionários e Departamento
+
+1. Existe dependência transitiva?
+Sim. gerente depende de departamento, não do funcionário.
+
+2. A tabela está na 3FN?
+Não, pois a coluna de gerente_departamento depende de departamento, ao invés da PK funcionario_id.
+
+3. Como separar corretamente?
+Separar os dados em tabelas específicas: a tabela Funcionario com os atributos que descrevem o funcionário e a tabela Departamento com os atributos correspondentes. 
+A ligação entre as duas é feita por departamento_id como FK, garantindo que o nome do departamento e seu gerente sejam registrados uma única vez, eliminando a redundância.
+
+## Exercício 5 — Produtos e Categoria
+
+1. Qual dependência funcional existe?
+Dependência transitiva, pois categoria_nome não depende diretamente de produto_id, depende de categoria_id.
+
+2. Como ficaria a tabela na 3FN?
+Separar em duas tabelas (produto e categoria) com uma FK relacionando a categoria corretamente.
+
+## Exercício 6 — Matrícula de alunos
+
+1. Quais atributos dependem de quais?
+- aluno_nome depende de aluno_id
+- curso_nome depende de curso_id
+
+2. Separe as tabelas corretamente.
+Separar em duas tabelas (Aluno e Curso) com os atributos correspondentes.
