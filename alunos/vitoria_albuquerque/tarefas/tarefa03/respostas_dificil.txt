@@ -5,7 +5,8 @@
 - O preço é um atributo de produto e não de pedido (dependência transitiva)
 
 2. Normalize até 3FN
-- Separar as tabelas em Pedido > Itens_Pedido > Produto
+- Separar as dependências parciais (pedido, cliente)
+- Criar tabela associativa N:M Pedido > Produto_Pedido > Produto
 - Separar tabelas para evitar redundância: Cliente > Cidade
 
 ## Exercício 8 — Venda e vendedor
@@ -36,4 +37,4 @@ Aluno, Professor, Disciplina e Disciplina_Aluno (tabela associativa)
 3FN - categoria depende de produto_nome, não da PK do produto (dependência transitiva).
 
 3. Quais seriam as tabelas finais?
-Clente, Pedido, Itens_Pedido, Produto, Categoria
+Clente, Pedido, Produto_Pedido, Produto, Categoria
