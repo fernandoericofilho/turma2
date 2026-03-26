@@ -2,7 +2,8 @@ Exercício 4:
 
 1. Existe dependência transitiva?
 
-Sim, existe dependência transitiva: departamento determina o gerente.
+Sim, existe dependência transitiva.
+o gerente não depende diretamente do funcionário depende do departamento
 
 2. A tabela está na 3FN?
 
@@ -12,8 +13,8 @@ A tabela não está na 3FN.
 
 Separação correta:
 
-Funcionarios (funcionario_id, nome, departamento_id)
-Departamentos (departamento_id, nome, gerente)
+Funcionarios (id, nome, departamento_id)
+Departamento (id, nome, gerente_id (FK))
 
 -------------------------------------------------------------------------
 
@@ -21,14 +22,13 @@ Exercício 5:
 
 1. Qual dependência funcional existe?
 
-Existe dependência funcional: categoria_id determina categoria_nome.
+categoria_nome não depende diretamente da chave primária
+depende de categoria_id
 
 2. Como ficaria a tabela na 3FN?
 
-Estrutura na 3FN:
-
-Categorias (categoria_id, categoria_nome)
-Produtos (produto_id, produto_nome, categoria_id)
+Precisamos eliminar a dependência transitiva
+segue anexo (imagens/5.png)
 
 -------------------------------------------------------------------------
 
@@ -42,7 +42,7 @@ aluno_nome depende de aluno_id e curso_nome depende de curso_id.
 
 Separação correta:
 
-Alunos (aluno_id, aluno_nome)
-Cursos (curso_id, curso_nome)
-Matriculas (id, aluno_id, curso_id)
+Alunos (aluno_id, nome_aluno)
+Cursos (curso_id, nome_curso)
+cursos_alunos (id, aluno_id, curso_id)
 
