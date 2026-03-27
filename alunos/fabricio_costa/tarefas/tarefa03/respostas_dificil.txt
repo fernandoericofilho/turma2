@@ -1,0 +1,69 @@
+Exercício 7:
+
+1. Identifique as dependências funcionais
+
+Dependências funcionais:
+pedido_id → cliente_nome
+pedido_id → cliente_cidade
+produto_nome → preco
+
+2. Normalize até 3FN
+
+Normalização até 3FN:
+
+segue o anexo (imagens/7.png)
+
+----------------------------------------------------------------------
+
+Exercício 8:
+
+1. Existe dependência transitiva?
+
+Sim, existe dependência transitiva:
+venda_id → vendedor_nome
+vendedor_nome → loja_nome
+loja_nome → loja_cidade
+
+2. Como dividir as tabelas?
+
+Separação correta:
+
+anexo (imagens/8.png)
+
+----------------------------------------------------------------------
+
+Exercício 9:
+
+1. Existe relação N:N?
+
+✔ Sim, existe.
+Um aluno pode cursar várias disciplinas
+Uma disciplina pode ter vários alunos
+
+2. Quais tabelas devem existir?
+
+Tabelas:
+
+Alunos (id, nome)
+Disciplinas (id, nome, professor)
+disciplinas_alunos(id, aluno_id, disciplina_id)
+
+----------------------------------------------------------------------
+
+Exercício 10:
+
+1. Identifique dependências funcionais
+
+Dependências funcionais:
+
+pedido_id → cliente_nome
+pedido_id → cliente_email
+produto_nome → categoria
+
+2. Normalização até a 3FN:
+
+Separar as entidades para remover redundância e dependências indevidas.
+
+3. Quais seriam as tabelas finais?
+
+segue anexo (imagens/10.png)
