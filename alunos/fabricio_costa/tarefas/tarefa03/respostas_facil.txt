@@ -1,0 +1,42 @@
+Exercício 1:
+
+1. A tabela está na 1FN?
+
+A tabela não está na 1FN, pois possui mais de um valor em uma única coluna.
+
+2. Como modelar corretamente os telefones?
+
+Modelagem correta:
+
+transformando a coluna telefones e uma nova tabela chamada telefones_clientes
+segue anexo (imagens/1.png)
+
+------------------------------------------------------------------------------------
+
+Exercício 2:
+
+1. Qual problema de normalização existe?
+
+O problema é a presença de múltiplos produtos em uma única coluna, violando a 1FN.
+
+2. Como ficaria a estrutura após aplicar 1FN?
+
+Estrutura após normalização:
+
+Uma tabela clientes, outra tabela pedidos, outra tabela itens_pedido e outra tabela produtos
+como mostrado no anexo (imagens/2.png)
+
+-------------------------------------------------------------------------------------
+
+Exercício 3:
+
+1. Qual regra da 1FN está sendo violada?
+
+A tabela viola a 1FN, pois possui múltiplos alunos em uma única coluna.
+
+2. Como ficaria a modelagem correta?
+
+Modelagem correta:
+
+Uma tabela para cursos, outra tabela cursos_alunos e outra tabela alunos
+como exemplificado no anexo (imagens/3.png
