@@ -1,0 +1,185 @@
+Exercício 1 — Cliente e Pedido
+Cenário:
+Um cliente pode fazer vários pedidos.
+
+Perguntas:
+1. Quais tabelas existem?
+Tabela "clientes" e tabela "pedidos".
+
+2. Qual a cardinalidade?
+1:N - Um para muitos.
+
+3. Defina PK e FK
+Tabela "clientes": PK = cliente_id
+Tabela "pedidos": Pk = pedido_id. FK = cliente_id.
+
+4. Faça um INNER JOIN.
+SELECT *
+FROM clientes c
+INNER JOIN pedidos p ON c.cliente_id = p.cliente_id;
+Mostra todos os clientes mesmo os que não têm nenhum pedido.
+
+Exemplos de JOIN:
+SELECT c.nome
+FROM clientes c
+INNER JOIN pedidos p ON c.cliente_id = p.cliente_id;
+Lista o nome dos clientes que tem pedidos.
+
+SELECT c.nome, p.valor
+FROM clientes c
+LEFT JOIN pedidos p ON c.cliente_id = p.cliente_id
+
+
+
+Exercício 2 — Pedido e Produto
+Cenário:
+Um pedido pode ter vários produtos
+Um produto pode estar em vários pedidos
+
+Perguntas:
+1. Qual o tipo de relacionamento?
+N:N - Muitos para muitos.
+
+2. Qual tabela intermediária criar?
+Criar a tabela "pedidos_produtos".
+
+3. Defina chave composta
+A chave composta será "pedido_id" e "produto_id" na tabela "pedidos_produtos".
+
+4. Monte as tabelas
+Tabelas montadas: "pedidos", "pedidos_produtos" e "produtos".
+
+Exemplos de JOIN:
+SELECT pedidos.pedido_id, produtos.nome
+FROM Pedidos
+INNER JOIN pedidos_produtos ON Pedidos.pedido_id = pedidos_produtos.pedido_id
+INNER JOIN Produtos ON pedidos_produtos.produto_id = Produtos.produto_id
+WHERE Pedidos.pedido_id = 201;
+Listar o que tem dentro do Pedido nº 201.
+
+
+SELECT produtos.nome, pedidos.pedido_id
+FROM produtos
+INNER JOIN pedidos_produtos ON Produtos.produto_id = pedidos_produtos.produto_id
+INNER JOIN Pedidos ON pedidos_produtos.pedido_id = Pedidos.pedido_id
+WHERE produtos.nome = 'Mouse';
+Descobrir em quais pedidos o produto "mouse" aparece.
+
+
+Exercício 3 — Funcionário e Departamento
+Cenário:
+Um funcionário pertence a um departamento
+Um departamento tem vários funcionários
+
+Perguntas:
+1. Qual a cardinalidade?
+1:N - Um para muitos.
+
+2. Onde fica a FK?
+A FK (departamento_id) fica na tabela "funcionarios", pois a chave estrangeira sempre fica no lado "N".
+
+3. Modele as tabelas
+Tabela Departamentos: "departamento_id" e "nome".
+Tabela Funcionários: "funcionario_id", "nome" e "departamento_id".
+
+Exemplos de JOIN:
+SELECT funcionarios.nome, departamentos.nome
+FROM Funcionarios
+INNER JOIN departamentos
+ON funcionarios.departamento_id = departamentos.departamento_id;
+Uma lista apenas com quem está devidamente alocado em um setor.
+
+SELECT funcionarios.nome, departamentos.nome
+FROM Funcionarios
+LEFT JOIN departamentos
+ON funcionarios.departamento_id = departamentos.departamento_id;
+Listar todos os funcionários mesmo que ele não esteja alocado em nenhum departamento.
+
+
+Exercício 4 — Índices
+Cenário:
+Tabela de pedidos com milhares de registros
+
+Perguntas:
+1. Em quais colunas você criaria índices?
+- Na chave estrangeira, "id_cliente".
+- Na data do pedido: "data_pedido";
+- No status da entrega como: "status_entrega";
+
+2. Por quê?
+Para que o banco de dados não precise lê uma tabela inteira quando for fazer alguma busca nessa tabela.
+Os indices servem para aumentar a velocidade nas buscas e melhorar a performace com o banco de dados.
+
+Exemplos de JOIN:
+SELECT p.pedido_id, prod.produtos_id
+FROM pedidos p
+INNER JOIN pedidos_produtos pp ON p.pedido_id = pp.pedido_id
+INNER JOIN produtos prod ON pp.produtos_id = prod.produtos_id;
+Listar apenas os produtos que realmente foram vendidos e em quais pedidos eles estão.
+
+SELECT prod.produtos_id, p.pedido_id
+FROM produtos prod
+LEFT JOIN pedidos_produtos pp ON prod.produtos_id = pp.produtos_id
+LEFT JOIN pedidos p ON pp.pedido_id = p.pedido_id;
+Listar todos os produtos, inclusive aqueles que nunca foram vendidos.
+
+
+
+Exercício 5 — Sistema Escolar
+Cenário:
+Alunos fazem disciplinas
+Professores ministram disciplinas
+
+Perguntas:
+1. Identifique relacionamentos
+- Nas tabelas alunos e disciplinas temos um relacionamento de (N:N) muios para muitos.
+- Nas tabelas professores e disciplina, temos por padrão que uma disciplina só pode ter um professor. Então é um relacionamento de muitos para um (N:1);
+
+2. Existe N:N?
+Sim, entre as tabelas "alunos" e "disciplinas";
+
+3. Quais tabelas criar?
+- Alunos (aluno_id, nome)
+- alunos_disciplinas (id, aluno_id [FK], disciplina_id [FK])
+- disciplinas (disciplina_id, nome, professor_id [FK])
+- professores (professor_id, nome)
+
+Exemplos de JOIN:
+SELECT alunos.nome as Nome_Aluno, disciplinas.nome as Materia, professores.nome AS Professor
+FROM Alunos
+INNER JOIN alunos_disciplinas ON Alunos.aluno_id = alunos_disciplinas.aluno_id
+INNER JOIN disciplinas ON alunos_disciplinas.disciplina_id = disciplinas.disciplina_id
+INNER JOIN professores ON disciplinas.professor_id = professores.professor_id;
+Listar apenas os alunos que estão matriculados em alguma disciplina e saber quem é o professor dessa disciplina.
+
+SELECT alunos.nome as Nome_Aluno, disciplinas.nome as Materia
+FROM alunos
+LEFT JOIN alunos_disciplinas ON alunos.aluno_id = alunos_disciplinas.aluno_id
+LEFT JOIN disciplinas ON alunos_disciplinas.disciplina_id = disciplinas.disciplina_id;
+Listar todos os alunos da escola, mesmo aqueles que acabaram de entrar e ainda não se matricularam em nenhuma disciplina.
+
+
+
+Exercício 6 — Joins
+Dadas as tabelas:
+Clientes
+Pedidos
+
+Perguntas:
+1. Faça:
+INNER JOIN
+SELECT c.nome, p.pedido_id, p.valor
+FROM clientes c
+INNER JOIN pedidos p ON c.cliente_id = p.cliente_id;
+Lista os clientes que realizaram pelo menos um pedido.
+
+LEFT JOIN
+SELECT c.nome, p.pedido_id, p.valor
+FROM clientes c
+LEFT JOIN pedidos p ON c.cliente_id = p.cliente_id;
+
+2. Explique a diferença
+A diferença principal está no tratamento de dados que não possuem correspondência na outra tabela:
+INNER JOIN: Ele só mostra a linha se o cliente_id existir nas duas tabelas ao mesmo tempo.
+
+LEFT JOIN: Ele prioriza a tabela da esquerda (clientes). Ele mostra todos os nomes da lista de clientes. Se o "João" não tiver pedidos, o nome dele aparece, mas as colunas de pedido (pedido_id, valor) ficam preenchidas com NULL.
