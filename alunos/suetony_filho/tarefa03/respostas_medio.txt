@@ -1,0 +1,37 @@
+#Exercícios Intermediários
+
+
+##Exercício 4 - Funcionários e Departamento
+
+###Questão 1: Existe dependência transitiva?
+
+R: Sim. Existe dependência transitiva, pois o gerente do departamento depende do departamento, e o departamento depende do funcionário (por estar na mesma tabela). Assim, um atributo não-chave depende de outro atributo não-chave.
+
+###Questão 2: A tabela está na 3FN?
+
+R: Não, pois um elemento não-chave depende de um elemento não-chave.
+
+###Questão 3: Como separar corretamente?
+
+R: A tabela deve ser separada em duas: Funcionários e Departamentos. Na tabela Funcionários, deve-se manter o id, nome e o departamento_id como chave estrangeira. Na tabela Departamentos, ficam o id, nome do departamento e o gerente. Dessa forma, elimina-se a dependência transitiva, garantindo a 3ª Forma Normal.
+
+##Exercício 5 - Produtos e Categoria
+
+###Questão 1: Qual dependência funcional existe?
+
+R: Existe dependência transitiva, pois o nome da categoria depende da categoria_id, que por sua vez depende do produto_id, assim um atributo não-chave depende de outro atributo não-chave.
+
+###Questão 2: Como ficaria a tabela na 3FN?
+
+R: Para atingir a 3ª Forma Normal, a tabela deve ser separada em duas: Produto e Categoria.
+A tabela Produto deve conter o id, nome e categoria_id como chave estrangeira. A tabela Categoria deve conter o id e o nome da categoria. Dessa forma, elimina-se a dependência transitiva, garantindo que todos os atributos não-chave dependam apenas da chave primária.
+
+##Exercício 6 - Matrícula de alunos
+
+###Questão 1: Quais atributos dependem de quais?
+
+R: O atributo aluno_nome depende de aluno_id, e o atributo curso_nome depende de curso_id. Além disso, o curso_id está associado ao aluno_id, pois indica em qual curso o aluno está matriculado.
+
+###Questão 2: Separe as tabelas corretamente.
+
+R: Para organizar na 3ª Forma Normal, a tabela deve ser separada em duas: Aluno e Curso. A tabela Aluno deve conter o id, nome e curso_id como chave estrangeira. A tabela Curso deve conter o id e o nome do curso. Dessa forma, elimina-se a dependência transitiva, garantindo que cada atributo dependa apenas da chave primária.
