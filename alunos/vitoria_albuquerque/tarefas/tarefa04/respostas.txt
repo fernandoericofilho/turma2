@@ -1,0 +1,119 @@
+## Exercício 1 — Cliente e Pedido
+
+1. Quais tabelas existem?
+Tabela Cliente e tabela pedido
+
+2. Qual a cardinalidade?
+1:N (um para muitos) - um cliente pode fazer vários pedidos e cada pedido tem apenas um cliente.
+
+3. Defina PK e FK
+cliente: id (PK)
+pedido: id (PK) e cliente_id (FK)
+
+4. Faça um INNER JOIN
+SELECT c.nome, p.cliente_id
+FROM cliente c
+INNER JOIN pedido p ON c.id = p.cliente_id
+
+--------------------------------------------------------------------
+## Exercício 2 — Pedido e Produto
+
+1. Qual o tipo de relacionamento?
+N:N (muitos para muitos)
+
+2. Qual tabela intermediária criar?
+produto_pedido
+
+3. Defina chave composta
+(pedido_id, produto_id)
+
+4. Monte as tabelas
+
+CREATE TABLE produto (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    preco NUMERIC(10,2) NOT NULL
+);
+
+CREATE TABLE produto_pedido (
+    pedido_id INTEGER NOT NULL,
+    produto_id INTEGER NOT NULL,
+    preco NUMERIC(10,2) NOT NULL,
+
+    PRIMARY KEY (pedido_id, produto_id),
+    FOREIGN KEY (pedido_id) REFERENCES pedido(id),
+    FOREIGN KEY (produto_id) REFERENCES produto(id)
+);
+
+--------------------------------------------------------------------
+
+## Exercício 3 — Funcionário e Departamento
+
+1. Qual a cardinalidade?
+N:1 (muitos para um) - funcionario pertence a um departamento e departamento pode ter vários funcionários.
+
+2. Onde fica a FK?
+A FK (departamento_id) fica na tabela funcionario para referenciar o departamento no qual ele pertence.
+
+3. Modele as tabelas
+CREATE TABLE departamento (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE funcionario (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    departamento_id INTEGER NOT NULL,
+    FOREIGN KEY (departamento_id) REFERENCES departamento(id)
+);
+
+--------------------------------------------------------------------
+## Exercício 4 — Índices
+
+1. Em quais colunas você criaria índices?
+Coluna "cliente_id"
+
+2. Por quê?
+Porque permite buscar os pedidos de um determinado cliente de forma mais rápida.
+
+--------------------------------------------------------------------
+
+## Exercício 5 — Sistema Escolar
+
+1. Identifique relacionamentos
+aluno - disciplina: (N:N)
+professor - disciplina: (1:N)
+
+2. Existe N:N?
+Sim. A relação entre alunos e disciplinas é N:N, pois um aluno pode fazer várias disciplinas e uma disciplina pode ter vários alunos.
+
+3. Quais tabelas criar?
+aluno, disciplina, aluno_disciplina e professor.
+
+4. Monte o DER (imagem)
+
+--------------------------------------------------------------------
+
+## Exercício 6 — Joins
+
+1. Faça:
+   - INNER JOIN
+
+    SELECT c.nome, p.cliente_id
+    FROM cliente c
+    INNER JOIN pedido p ON c.id = p.cliente_id
+
+   - LEFT JOIN
+
+    SELECT c.nome, p.cliente_id
+    FROM cliente c
+    LEFT JOIN pedido p ON c.id = p.cliente_id
+
+2. Explique a diferença
+INNER JOIN mostra os registros em comum entre as tabelas.
+Ex: mostra os clientes que tem pedidos. Se um cliente não tiver pedido não aparece.
+LEFT JOIN além de mostrar os registros em comum, exibe os da tabela da esquerda.
+Ex: mostra todos os clientes. Se não tiver pedido, fica NULL.
+
+
