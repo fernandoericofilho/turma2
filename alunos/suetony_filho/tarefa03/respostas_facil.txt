@@ -1,0 +1,31 @@
+#Exercícios fáceis
+
+##Exercício 1 – Telefones de Cliente
+
+###Questão 1. A tabela está na 1FN?
+
+R: Não, pois em telefones uma das células esta com mais de um valor nela.
+
+###Questão 2. Como modelar corretamente os telefones?
+
+R: Dividindo de forma correta as tabelas, sendo 1 só pra cliente id e nome, e depois criando uma onde tera os telefones e o id do cliente, podendo o mesmo ter vários telefones, no caso uma relação de 1:N (1 para muitos). 
+
+##Exercício 2 – Pedido com vários produtos
+
+###Questão 1. Qual problema de normalização existe?
+
+R: Mais de um valor na célula, em produtos com pedido_id 1, tem arroz e feijão na mesma célula.
+
+###Questão 2. Como ficaria a estrutura após aplicar 1FN?
+
+R: Seria dividido as tabelas, onde em uma ficaria o id do pedido e o cliente, e na outra os produtos, onde na mesma se encaixaria o id do pedido, pra simbolizar que aquele cliente comprou aquele alimento, sem gerar redundância. 
+
+##Exercício 3 – Curso e alunos
+
+###Questão 1. Qual regra da 1FN está sendo violada?
+
+R: A regra violada e a qual que diz que não podem ter mais de um valor na  célula.
+
+###Questão 2. Como ficaria a modelagem correta?
+
+R: Criaria-se 1 tabela para curso_id e curso_nome, outra contendo um id para o aluno e o nome dele, e logo após uma tabela para normalizar essas informações, com o nome de curso_alunos, onde teria o id do curso e o id do aluno. Isso e uma relação de N:N (Muitos para muitos).

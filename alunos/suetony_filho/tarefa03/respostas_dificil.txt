@@ -1,0 +1,45 @@
+#Exercícios Difíceis
+
+##Exercício 7 - Pedido completo
+
+###Questão 1: Identifique as dependências funcionais
+
+R: as dependências funcionais são que o pedido_id determina o cliente_nome e a cliente_cidade, enquanto o produto_nome determina o preco, havendo ainda uma dependência transitiva onde a cidade do cliente está ligada ao pedido apenas através da figura do cliente.
+
+###Questão 2: Normalize até 3FN
+
+R: a normalização para 3FN exige a divisão em quatro tabelas: uma tabela de Cliente com id, nome e cidade; uma tabela de Produto com id, nome e preco; uma tabela de Pedido contendo apenas o seu id e a chave estrangeira cliente_id; e uma tabela intermediária Pedido_Produto com as chaves pedido_id e produto_id para registrar quais itens pertencem a cada venda sem gerar repetições de dados cadastrais.
+
+##Exercício 8 - Venda e vendedor
+
+###Questão 1: Existe dependência transitiva?
+
+R: Sim, existe dependência transitiva porque os atributos loja_nome e loja_cidade dependem do vendedor, que por sua vez é determinado pelo venda_id, criando uma relação indireta entre a loja e a venda.
+
+###Questão 2: Como dividir as tabelas?
+
+R:As tabelas devem ser divididas em três entidades para eliminar a redundância: uma tabela Loja contendo id, nome e cidade; uma tabela Vendedor contendo id, nome e a chave estrangeira loja_id; e uma tabela Venda contendo id e a chave estrangeira vendedor_id.
+
+##Exercício 9 - Sistema de universidade
+
+###Questão 1: Existe relação N:N?
+
+R: Sim, existe uma relação N:N (Muitos-para-Muitos), pois um aluno pode estar matriculado em várias disciplinas e cada disciplina pode possuir vários alunos matriculados simultaneamente.
+
+###Questão 2: Quais tabelas devem existir?
+
+R: Devem existir três tabelas: uma tabela Aluno (id, nome); uma tabela Disciplina (id, nome, professor); e uma tabela intermediária Aluno_Disciplina (aluno_id, disciplina_id) para registrar o vínculo de matrícula entre eles sem repetir os dados cadastrais em cada linha.
+
+##Exercício 10 - Sistema de e-commerce
+
+###Questão 1: Identifique dependências funcionais
+
+R: As dependências funcionais mostram que o pedido_id determina o cliente, o produto_nome determina a categoria, e existe uma relação de muitos-para-muitos (N:N) entre pedidos e produtos que exige uma tabela de ligação.
+
+###Questão 2: Normalize até 3FN
+
+R: A normalização para 3FN foi aplicada separando os dados em cinco entidades distintas para eliminar dependências transitivas e permitir que um cliente tenha vários pedidos e um pedido tenha vários produtos
+
+###Questão 3: Quais seriam as tabelas finais?
+
+R: As tabelas finais são: Cliente (id, nome, email), Categoria (id, nome), Produto (id, nome, categoria_id), Pedido (id, cliente_id) e a tabela de associação Produto_Pedido (id, pedido_id, produto_id).
