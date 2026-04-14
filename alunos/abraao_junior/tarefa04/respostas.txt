@@ -80,4 +80,37 @@ Os índices aceleram o processo de busca em uma tabela e melhora o desempenho em
 na tabela, os índices ocupam espaço em disco e pode deixar a manipulação desses dados mais lenta.
 
 
+Exercício 05 - Sistema Escolar
+1 - Identifique relacionamentos:
+Alunos e disciplinas: N:N.
+Professores e disciplinas: 1:N.
+
+2 - Existe N:N?
+Sim. Um aluno pode cursar várias disciplinas e uma disciplina pode ter vários alunos.
+
+3 - Quais tabelas criar?
+As tabelas: alunos, disciplina, professor e aluno_disciplina.
+
+
+Exercício 06 - Joins
+1 - Faça:
+INNER JOIN:
+SELECT c.nome, p.valor
+FROM cliente c
+INNER JOIN pedido p ON c.id_cliente = p.id_cliente;
+
+LEFT JOIN:
+SELECT c.nome, p.valor
+FROM cliente c
+LEFT JOIN pedido p ON c.id_cliente = p.id_cliente;
+
+
+2 - Explique a diferença:
+INNER JOIN retorna todos os registros com os valores correspondentes em ambas tabelas.
+LEFT JOIN retorna todos os registros da tabela da esquerda e os valores da tabela da direita quando forem correspondentes.
+Caso um registro não esteja na tabela da direita, o valor retornado é 'NULL'.
+
+
+
+
 
