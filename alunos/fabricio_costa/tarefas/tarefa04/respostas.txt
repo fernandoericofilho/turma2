@@ -1,0 +1,169 @@
+🟢 Exercício 1 — Cliente e Pedido
+Cenário:
+
+Um cliente pode fazer vários pedidos.
+
+Perguntas:
+Quais tabelas existem?
+
+-- clientes e pedidos
+
+Qual a cardinalidade?
+
+-- 1:N (um para muitos)
+-- Um cliente → vários pedidos
+
+Defina PK e FK
+
+-- PK: clientes(cliente_id), pedidos(pedido_id)
+-- FK: pedidos(cliente_id)
+
+Faça um INNER JOIN
+
+-- SELECT *
+FROM clientes
+INNER JOIN pedidos
+ON clientes.cliente_id = pedidos.cliente_id;
+
+🟢 Exercício 2 — Pedido e Produto
+Cenário:
+
+Um pedido pode ter vários produtos
+Um produto pode estar em vários pedidos
+
+Perguntas:
+Qual o tipo de relacionamento?
+
+-- N:N (muitos para muitos)
+
+Qual tabela intermediária criar?
+
+-- pedido_produto
+
+Defina chave composta
+
+-- PK: (pedido_id, produto_id)
+
+Monte as tabelas
+
+-- produtos |    pedidos   | pedido_produto
+produto_id (PK) | pedido_id (PK) | pedido_id (PK, FK)
+nome | | produto_id (PK, FK)
+preco | | quantidade
+
+🟡 Exercício 3 — Funcionário e Departamento
+Cenário:
+
+Um funcionário pertence a um departamento
+Um departamento tem vários funcionários
+
+Perguntas:
+Qual a cardinalidade?
+
+-- 1:N
+-- Um departamento → vários funcionários
+
+Onde fica a FK?
+
+-- Na tabela funcionarios
+
+Modele as tabelas
+
+-- departamentos | funcionarios
+departamento_id (PK) | funcionario_id (PK)
+nome | nome
+| departamento_id (FK)
+
+🟡 Exercício 4 — Índices
+Cenário:
+
+Tabela de pedidos com milhares de registros
+
+Perguntas:
+Em quais colunas você criaria índices?
+
+-- pedido_id (PK)
+-- cliente_id (FK)
+-- data_pedido
+
+Por quê?
+
+-- pedido_id
+Já é chave primária → indexada automaticamente → melhora buscas diretas
+
+-- cliente_id
+Usado em JOINs com clientes → melhora a performance
+
+-- data_pedido
+Usado em filtros por período (WHERE) → acelera consultas
+
+🔴 Exercício 5 — Sistema Escolar
+Cenário:
+
+Alunos fazem disciplinas
+Professores ministram disciplinas
+
+Perguntas:
+Identifique relacionamentos
+
+-- Aluno ↔ Disciplina
+-- Professor → Disciplina
+
+Existe N:N?
+
+-- Sim
+
+-- Aluno ↔ Disciplina = N:N (muitos para muitos)
+Um aluno pode fazer várias disciplinas
+Uma disciplina pode ter vários alunos
+
+-- Professor → Disciplina = 1:N
+Um professor pode ministrar várias disciplinas
+Uma disciplina pertence a um professor
+
+Quais tabelas criar?
+
+-- alunos | professores | disciplinas
+aluno_id (PK) | professor_id (PK) | disciplina_id (PK)
+nome | nome | nome
+| | professor_id (FK)
+
+-- aluno_disciplina
+aluno_id (PK, FK)
+disciplina_id (PK, FK)
+
+Monte o DER (descrição)
+
+-- alunos (1) ----< aluno_disciplina >---- (N) disciplinas
+-- disciplinas (N) ---- (1) professores
+
+🔴 Exercício 6 — Joins
+Dadas as tabelas:
+
+Clientes
+Pedidos
+
+Perguntas:
+Faça:
+
+INNER JOIN
+
+-- SELECT *
+FROM clientes
+INNER JOIN pedidos
+ON clientes.cliente_id = pedidos.cliente_id;
+
+LEFT JOIN
+
+-- SELECT *
+FROM clientes
+LEFT JOIN pedidos
+ON clientes.cliente_id = pedidos.cliente_id;
+
+Explique a diferença
+
+-- INNER JOIN
+Retorna apenas registros com correspondência nas duas tabelas
+
+-- LEFT JOIN
+Retorna todos os clientes, mesmo sem pedidos (NULL)
