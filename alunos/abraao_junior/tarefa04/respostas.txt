@@ -1,0 +1,116 @@
+Exercício 01 - Cliente e Pedido
+1 - Quais tabelas existem?
+Tabelas: cliente e pedido.
+
+2 - Qual a cardinalidade?
+Um para muitos (1:N).
+
+3 - Defina PK e FK:
+PK (Primary Key): Significa chave-primária. É a coluna de identificação de uma linha na tabela, tem valor único e não pode ser nula.
+FK (Foreign Key): Significa chave-estrangeira. É a coluna que faz referência à chave-primária em outra tabela.
+
+4 - Faça um INNER JOIN:
+SELECT c.nome
+FROM cliente c
+INNER JOIN pedido p ON c.id_cliente = p.id_cliente;
+
+
+Exercício 02 - Pedido e Produto
+1 - Qual o tipo de relacionamento?
+Muitos para muitos (N:N).
+
+2 - Qual tabela intermediária criar?
+Tabela produto_pedido contendo o 'id' das tabelas pedido e produto como FK.
+
+3 - Defina chave composta:
+É a chave formada por mais de uma coluna para identificar uma linha da tabela.
+
+4 - Monte as tabelas:
+CREATE TABLE produto (
+    id_produto INT PRIMARY KEY,
+    nome VARCHAR(100),
+    preco DECIMAL(10,2)
+);
+
+CREATE TABLE pedido (
+    id_pedido INT PRIMARY KEY,
+    id_cliente INT,
+    data DATE,
+    FOREING KEY (id_cliente) REFERENCES cliente
+);
+
+CREATE TABLE produto_pedido (
+    id_pedido INT,
+    id_produto INT,
+    quantidade INT,
+    preco_compra DECIMAL(10,2)
+    PRIMARY KEY (id_pedido, id_produto),
+    FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido),
+    FOREIGN KEY (id_produto) REFERENCES produto(id_produto)
+);
+
+
+Exercício 03 - Funcionário e Departamento
+1 - Qual a cardinalidade?
+1:N. Um departamento tem vários funcionários
+
+2 - Onde fica a FK?
+Fica na tabela de funcionários.
+
+3 - Modele as tabelas:
+CREATE TABLE funcionario (
+    id_funcionario INT PRIMARY KEY,
+    nome VARCHAR(100),
+    id_departamento INT,
+    FOREIGN KEY (id_departamento) REFERENCES departamento(id_departamento)
+);
+
+CREATE TABLE departamento (
+    id_departamento INT PRIMARY KEY,
+    nome_departamento VARCHAR(100)
+);
+
+
+Exercício 04 - Índices
+1 - Em quais colunas você criaria índices?
+Em colunas frequentemente usadas em consultas. Ex: id_cliente(FK) e data.
+
+2 - Por quê?
+Os índices aceleram o processo de busca em uma tabela e melhora o desempenho em JOIN. Por ser uma informação extra adicionada
+na tabela, os índices ocupam espaço em disco e pode deixar a manipulação desses dados mais lenta.
+
+
+Exercício 05 - Sistema Escolar
+1 - Identifique relacionamentos:
+Alunos e disciplinas: N:N.
+Professores e disciplinas: 1:N.
+
+2 - Existe N:N?
+Sim. Um aluno pode cursar várias disciplinas e uma disciplina pode ter vários alunos.
+
+3 - Quais tabelas criar?
+As tabelas: alunos, disciplina, professor e aluno_disciplina.
+
+
+Exercício 06 - Joins
+1 - Faça:
+INNER JOIN:
+SELECT c.nome, p.valor
+FROM cliente c
+INNER JOIN pedido p ON c.id_cliente = p.id_cliente;
+
+LEFT JOIN:
+SELECT c.nome, p.valor
+FROM cliente c
+LEFT JOIN pedido p ON c.id_cliente = p.id_cliente;
+
+
+2 - Explique a diferença:
+INNER JOIN retorna todos os registros com os valores correspondentes em ambas tabelas.
+LEFT JOIN retorna todos os registros da tabela da esquerda e os valores da tabela da direita quando forem correspondentes.
+Caso um registro não esteja na tabela da direita, o valor retornado é 'NULL'.
+
+
+
+
+
