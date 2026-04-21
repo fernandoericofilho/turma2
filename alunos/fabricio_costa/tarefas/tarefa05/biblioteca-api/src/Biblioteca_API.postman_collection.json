@@ -1,0 +1,273 @@
+{
+  "info": {
+    "name": "Biblioteca_API",
+    "_postman_id": "biblioteca-api-collection",
+    "description": "Collection completa da API REST de Biblioteca — Spring Boot",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080", "type": "string" },
+    { "key": "livroId", "value": "1",                    "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "POST — Cadastrar Livro",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "{{baseUrl}}/livros", "host": ["{{baseUrl}}"], "path": ["livros"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Effective Java\",\n  \"autor\": \"Joshua Bloch\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 201 Created', function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "pm.test('Response tem id, titulo e autor', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.id).to.not.be.null;",
+              "    pm.expect(json.titulo).to.eql('Effective Java');",
+              "    pm.expect(json.autor).to.eql('Joshua Bloch');",
+              "});",
+              "",
+              "pm.test('Header Location presente', function () {",
+              "    pm.response.to.have.header('Location');",
+              "});",
+              "",
+              "// Salva o ID para usar nos próximos requests",
+              "const json = pm.response.json();",
+              "pm.collectionVariables.set('livroId', json.id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "POST — Validation Error (campos vazios)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "{{baseUrl}}/livros", "host": ["{{baseUrl}}"], "path": ["livros"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"\",\n  \"autor\": \"\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 400 Bad Request', function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test('Response tem campo campos com erros', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.campos).to.not.be.null;",
+              "    pm.expect(json.campos).to.have.property('titulo');",
+              "    pm.expect(json.campos).to.have.property('autor');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET — Listar Todos (paginado)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/livros?page=0&size=5&sort=titulo",
+          "host": ["{{baseUrl}}"],
+          "path": ["livros"],
+          "query": [
+            { "key": "page", "value": "0" },
+            { "key": "size", "value": "5" },
+            { "key": "sort", "value": "titulo" }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 200 OK', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response é uma página com content', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json).to.have.property('content');",
+              "    pm.expect(json).to.have.property('totalElements');",
+              "    pm.expect(json).to.have.property('totalPages');",
+              "    pm.expect(json.content).to.be.an('array');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET — Buscar por ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/livros/{{livroId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["livros", "{{livroId}}"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 200 OK', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response tem id, titulo e autor', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.id).to.not.be.null;",
+              "    pm.expect(json.titulo).to.not.be.null;",
+              "    pm.expect(json.autor).to.not.be.null;",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET — Buscar por ID inexistente (404)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/livros/9999",
+          "host": ["{{baseUrl}}"],
+          "path": ["livros", "9999"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 404 Not Found', function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "pm.test('Response tem campo mensagem', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.mensagem).to.include('9999');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET — Buscar por Título",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/livros/titulo?titulo=Effective",
+          "host": ["{{baseUrl}}"],
+          "path": ["livros", "titulo"],
+          "query": [{ "key": "titulo", "value": "Effective" }]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 200 OK', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response é um array', function () {",
+              "    pm.expect(pm.response.json()).to.be.an('array');",
+              "});",
+              "",
+              "pm.test('Livros encontrados contêm o título buscado', function () {",
+              "    const lista = pm.response.json();",
+              "    lista.forEach(livro => {",
+              "        pm.expect(livro.titulo.toLowerCase()).to.include('effective');",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "PUT — Atualizar Livro",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/livros/{{livroId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["livros", "{{livroId}}"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Effective Java — 3ª Edição\",\n  \"autor\": \"Joshua Bloch\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 200 OK', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Título foi atualizado', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.titulo).to.eql('Effective Java — 3ª Edição');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "DELETE — Deletar Livro",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/livros/{{livroId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["livros", "{{livroId}}"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 204 No Content', function () {",
+              "    pm.response.to.have.status(204);",
+              "});",
+              "",
+              "pm.test('Body está vazio', function () {",
+              "    pm.expect(pm.response.text()).to.be.empty;",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
