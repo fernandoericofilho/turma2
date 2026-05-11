@@ -25,5 +25,6 @@ public class LivroService {
             throw new RuntimeException("Estoque insuficiente");
         }
         livro.setEstoque(livro.getEstoque() - quantidade);
+        repository.save(livro);
     }
 }
