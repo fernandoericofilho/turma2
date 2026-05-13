@@ -13,11 +13,11 @@ public class LeitorService {
 
     private final LeitorRepository leitorRepository;
 
-    public final Leitor criar(Leitor leitor){
+    public Leitor criar(Leitor leitor){
         return leitorRepository.save(leitor);
     }
 
-    public final List<Leitor> buscarTodos(){
+    public List<Leitor> buscarTodos(){
         return leitorRepository.findAll();
     }
 

@@ -2,6 +2,7 @@ package com.dev.sistema_biblioteca.service;
 
 import com.dev.sistema_biblioteca.entity.Emprestimo;
 import com.dev.sistema_biblioteca.entity.Leitor;
+import com.dev.sistema_biblioteca.entity.Livro;
 import com.dev.sistema_biblioteca.repository.EmprestimoRepository;
 import com.dev.sistema_biblioteca.repository.LeitorRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -33,5 +34,9 @@ public class EmprestimoService {
 
     public List<Emprestimo> buscarTodos(){
         return emprestimoRepository.findAll();
+    }
+
+    public List<Livro> buscarLivrosPorLeitor(Long leitorId){
+        return emprestimoRepository.buscarLivrosPorLeitor(leitorId);
     }
 }

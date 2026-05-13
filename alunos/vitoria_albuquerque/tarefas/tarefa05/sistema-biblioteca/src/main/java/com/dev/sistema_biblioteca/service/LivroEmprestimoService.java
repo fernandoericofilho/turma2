@@ -35,11 +35,7 @@ public class LivroEmprestimoService {
         livroEmprestimo.setQuantidade(quantidade);
 
         return livroEmprestimoRepository.save(livroEmprestimo);
-    };
-
-    public List<Livro> buscarLivrosPorLeitor(Long leitorId){
-        return livroEmprestimoRepository.buscarLivrosPorLeitor(leitorId);
-    };
+    }
 
     public List<Object[]> contarEmprestimosPorLivro(){
         return livroEmprestimoRepository.contarEmprestimosPorLivro();

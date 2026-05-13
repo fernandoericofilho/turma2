@@ -1,6 +1,8 @@
 package com.dev.sistema_biblioteca.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 @AllArgsConstructor
@@ -19,11 +21,14 @@ public class LivroEmprestimo {
 
     @ManyToOne
     @JoinColumn(name = "id_livro", nullable = false)
+    @NotNull
     private Livro livro;
 
     @ManyToOne
     @JoinColumn(name = "id_emprestimo", nullable = false)
+    @NotNull
     private Emprestimo emprestimo;
 
+    @Positive
     private Integer quantidade;
 }

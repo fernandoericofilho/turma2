@@ -1,6 +1,7 @@
 package com.dev.sistema_biblioteca.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -28,6 +29,7 @@ public class Emprestimo {
 
     @ManyToOne
     @JoinColumn(name = "leitor_id")
+    @NotNull
     private Leitor leitor;
 
     @OneToMany(mappedBy = "emprestimo")
