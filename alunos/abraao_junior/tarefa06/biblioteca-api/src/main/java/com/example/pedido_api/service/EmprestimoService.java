@@ -38,7 +38,7 @@ public class EmprestimoService {
 
         for (var entry : livros.entrySet()) {
 
-            Livro livro = livroService.buscarPorId(entry.getKey());
+            Livro livro = livroService.buscarEntityPorId(entry.getKey());
 
             livroService.diminuirEstoque(livro, entry.getValue());
 
