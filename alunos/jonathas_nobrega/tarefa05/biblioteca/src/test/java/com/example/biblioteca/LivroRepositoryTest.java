@@ -2,10 +2,9 @@ package com.example.biblioteca;
 
 import com.example.biblioteca.entity.Leitor;
 import com.example.biblioteca.entity.Livro;
-import com.example.biblioteca.entity.Emprestimo;
 import com.example.biblioteca.repository.LeitorRepository;
 import com.example.biblioteca.repository.LivroRepository;
-import com.example.biblioteca.service.EmprestimoService;
+import com.example.biblioteca.services.EmprestimoService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,6 +91,12 @@ public class LivroRepositoryTest {
             );
         }
 
-        assertEquals(1, resultado.size());
+        boolean encontrou = resultado.stream()
+                .anyMatch(r ->
+                        r[0].equals("BookTest") &&
+                                ((Long) r[1]) == 1L
+                );
+
+        assertEquals(true, encontrou);
     }
 }

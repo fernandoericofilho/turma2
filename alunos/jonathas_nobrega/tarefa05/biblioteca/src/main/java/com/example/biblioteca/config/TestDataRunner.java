@@ -5,7 +5,7 @@ import com.example.biblioteca.entity.Livro;
 import com.example.biblioteca.entity.Emprestimo;
 import com.example.biblioteca.repository.LeitorRepository;
 import com.example.biblioteca.repository.LivroRepository;
-import com.example.biblioteca.service.EmprestimoService;
+import com.example.biblioteca.services.EmprestimoService;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

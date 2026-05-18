@@ -1,4 +1,4 @@
-package com.example.biblioteca.service;
+package com.example.biblioteca.services;
 
 import com.example.biblioteca.entity.*;
 import com.example.biblioteca.repository.*;
