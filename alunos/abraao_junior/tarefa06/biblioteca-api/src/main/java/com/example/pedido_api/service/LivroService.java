@@ -3,6 +3,7 @@ package com.example.pedido_api.service;
 import com.example.pedido_api.dto.LivroDTO;
 import com.example.pedido_api.mapper.LivroMapper;
 import com.example.pedido_api.model.Livro;
+import com.example.pedido_api.repository.LivroEmprestimoRepository;
 import com.example.pedido_api.repository.LivroRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -16,6 +17,8 @@ public class LivroService {
     private final LivroRepository repository;
 
     private final LivroMapper mapper;
+
+    private final LivroEmprestimoRepository livroEmprestimoRepository;
 
     public LivroDTO cadastrar(LivroDTO dto) {
 
@@ -76,6 +79,14 @@ public class LivroService {
     }
 
     public void deletar(Long id) {
+
+        if (livroEmprestimoRepository
+                .existsByLivroId(id)) {
+
+            throw new RuntimeException(
+                    "Livro possui empréstimos vinculados"
+            );
+        }
 
         repository.deleteById(id);
     }

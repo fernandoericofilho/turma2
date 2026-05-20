@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,8 +23,7 @@ public class LivroController {
     private final LivroMapper mapper;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public LivroResponse cadastrar(
+    public ResponseEntity<LivroResponse> cadastrar(
             @RequestBody @Valid LivroRequest request
     ) {
 
@@ -31,7 +31,11 @@ public class LivroController {
 
         LivroDTO salvo = service.cadastrar(dto);
 
-        return mapper.toResponse(salvo);
+        LivroResponse response = mapper.toResponse(salvo);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(response);
     }
 
     @GetMapping

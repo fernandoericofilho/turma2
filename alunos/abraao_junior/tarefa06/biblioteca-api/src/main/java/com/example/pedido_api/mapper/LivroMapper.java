@@ -15,6 +15,7 @@ public class LivroMapper {
 
         dto.setTitulo(request.getTitulo());
         dto.setAutor(request.getAutor());
+        dto.setEstoque(request.getEstoque());
 
         return dto;
     }
