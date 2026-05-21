@@ -8,12 +8,64 @@
   "item": [
     {
       "name": "cadastrar",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "const numero = Math.floor(Math.random() * 1000);\r",
+              "\r",
+              "pm.environment.set(\r",
+              "    \"tituloLivro\",\r",
+              "    \"Livro_\" + numero\r",
+              ")"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status deve ser 201\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response possui id\", function () {\r",
+              "\r",
+              "    const json = pm.response.json();\r",
+              "\r",
+              "    pm.expect(json.id).to.not.be.null;\r",
+              "});\r",
+              "\r",
+              "const json = pm.response.json();\r",
+              "\r",
+              "pm.environment.set(\r",
+              "    \"livroId\",\r",
+              "    json.id\r",
+              ");\r",
+              "\r",
+              "pm.test(\"Tempo menor que 500ms\", function () {\r",
+              "\r",
+              "    pm.expect(\r",
+              "        pm.response.responseTime\r",
+              "    ).to.be.below(500);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"titulo\": \"\",\r\n    \"autor\": \"\",\r\n    \"estoque\": 3\r\n}",
+          "raw": "{\r\n  \"titulo\": \"{{tituloLivro}}\",\r\n  \"autor\": \"Robert Martin\",\r\n  \"estoque\": 2\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -36,6 +88,63 @@
     },
     {
       "name": "buscarTodos",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Response possui id\", function () {\r",
+              "\r",
+              "    const json = pm.response.json();\r",
+              "\r",
+              "    pm.expect(json.id).to.not.be.null;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Lista não vazia\", function () {\r",
+              "\r",
+              "    const json = pm.response.json();\r",
+              "\r",
+              "    pm.expect(json.content.length)\r",
+              "        .to.be.above(0);\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/livros?page=0&size=10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "livros"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "buscarTodos Copy",
       "event": [
         {
           "listen": "test",
@@ -80,11 +189,28 @@
     },
     {
       "name": "buscarPorId",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Livro encontrado\", function () {\r",
+              "    const json = pm.response.json();\r",
+              "\r",
+              "    pm.expect(json.id).to.not.be.null;\r",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/livros/15",
+          "raw": "http://localhost:8080/livros/{{livroId}}",
           "protocol": "http",
           "host": [
             "localhost"
@@ -92,7 +218,7 @@
           "port": "8080",
           "path": [
             "livros",
-            "15"
+            "{{livroId}}"
           ]
         }
       },
@@ -100,11 +226,30 @@
     },
     {
       "name": "buscarPorTitulo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Título correto\", function () {\r",
+              "\r",
+              "    const json = pm.response.json();\r",
+              "\r",
+              "    pm.expect(json[0].titulo)\r",
+              "        .to.eql(\"Clean Code\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/livros/titulo?titulo=clean code",
+          "raw": "http://localhost:8080/livros/titulo?titulo=Clean Code",
           "protocol": "http",
           "host": [
             "localhost"
@@ -117,7 +262,7 @@
           "query": [
             {
               "key": "titulo",
-              "value": "clean code"
+              "value": "Clean Code"
             }
           ]
         }
@@ -126,12 +271,30 @@
     },
     {
       "name": "atualizar",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Livro atualizado\", function () {\r",
+              "    const json = pm.response.json();\r",
+              "\r",
+              "    pm.expect(json.titulo).to.eql(\"Entendendo Algoritmos II\");\r",
+              "    pm.expect(json.estoque).to.eql(5);\r",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "request": {
         "method": "PUT",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"autor\": \"\",\r\n    \"titulo\": \"Tudo é rio\"\r\n}",
+          "raw": "{\r\n    \"autor\": \"Aditya Y. Bhargava\",\r\n    \"titulo\": \"Entendendo Algoritmos II\",\r\n    \"estoque\": 5\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -155,11 +318,26 @@
     },
     {
       "name": "deletar",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Livro removido\", function () {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "request": {
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/livros/1",
+          "raw": "http://localhost:8080/livros/10",
           "protocol": "http",
           "host": [
             "localhost"
@@ -167,7 +345,7 @@
           "port": "8080",
           "path": [
             "livros",
-            "1"
+            "10"
           ]
         }
       },
