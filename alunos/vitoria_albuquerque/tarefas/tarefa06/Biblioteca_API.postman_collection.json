@@ -65,7 +65,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"titulo\": \"{{tituloLivro}}\",\r\n  \"autor\": \"Robert Martin\",\r\n  \"estoque\": 2\r\n}",
+          "raw": "{\r\n  \"titulo\": \"{{tituloLivro}}\",\r\n  \"autor\": \"Robert Martin\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -93,11 +93,17 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"Response possui id\", function () {\r",
+              "pm.test(\"Status deve ser 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Todos os livros possuem id\", function () {\r",
               "\r",
               "    const json = pm.response.json();\r",
               "\r",
-              "    pm.expect(json.id).to.not.be.null;\r",
+              "    json.content.forEach((livro) => {\r",
+              "        pm.expect(livro.id).to.not.be.null;\r",
+              "    });\r",
               "});\r",
               "\r",
               "pm.test(\"Lista não vazia\", function () {\r",
@@ -107,6 +113,7 @@
               "    pm.expect(json.content.length)\r",
               "        .to.be.above(0);\r",
               "});\r",
+              "\r",
               "\r",
               ""
             ],
@@ -144,56 +151,16 @@
       "response": []
     },
     {
-      "name": "buscarTodos Copy",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "exec": [
-              "pm.test(\"Status 200\", function () {\r",
-              "    pm.response.to.have.status(200);\r",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:8080/livros?page=0&size=5",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8080",
-          "path": [
-            "livros"
-          ],
-          "query": [
-            {
-              "key": "page",
-              "value": "0"
-            },
-            {
-              "key": "size",
-              "value": "5"
-            }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
       "name": "buscarPorId",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
+              "pm.test(\"Status deve ser 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
               "pm.test(\"Livro encontrado\", function () {\r",
               "    const json = pm.response.json();\r",
               "\r",
@@ -231,6 +198,10 @@
           "listen": "test",
           "script": {
             "exec": [
+              "pm.test(\"Status deve ser 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
               "pm.test(\"Título correto\", function () {\r",
               "\r",
               "    const json = pm.response.json();\r",
@@ -276,11 +247,14 @@
           "listen": "test",
           "script": {
             "exec": [
+              "pm.test(\"Status deve ser 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
               "pm.test(\"Livro atualizado\", function () {\r",
               "    const json = pm.response.json();\r",
               "\r",
               "    pm.expect(json.titulo).to.eql(\"Entendendo Algoritmos II\");\r",
-              "    pm.expect(json.estoque).to.eql(5);\r",
               "})"
             ],
             "type": "text/javascript",
@@ -294,7 +268,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"autor\": \"Aditya Y. Bhargava\",\r\n    \"titulo\": \"Entendendo Algoritmos II\",\r\n    \"estoque\": 5\r\n}",
+          "raw": "{\r\n    \"autor\": \"Aditya Y. Bhargava\",\r\n    \"titulo\": \"Entendendo Algoritmos II\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -302,7 +276,7 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8080/livros/1",
+          "raw": "http://localhost:8080/livros/{{livroId}}",
           "protocol": "http",
           "host": [
             "localhost"
@@ -310,7 +284,7 @@
           "port": "8080",
           "path": [
             "livros",
-            "1"
+            "{{livroId}}"
           ]
         }
       },
@@ -323,7 +297,7 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"Livro removido\", function () {\r",
+              "pm.test(\"Status deve ser 204\", function () {\r",
               "    pm.response.to.have.status(204);\r",
               "});"
             ],
@@ -337,7 +311,7 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/livros/10",
+          "raw": "http://localhost:8080/livros/{{livroId}}",
           "protocol": "http",
           "host": [
             "localhost"
@@ -345,7 +319,7 @@
           "port": "8080",
           "path": [
             "livros",
-            "10"
+            "{{livroId}}"
           ]
         }
       },

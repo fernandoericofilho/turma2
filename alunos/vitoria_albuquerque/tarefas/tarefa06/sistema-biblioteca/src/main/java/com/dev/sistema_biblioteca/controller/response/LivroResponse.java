@@ -11,5 +11,4 @@ public class LivroResponse {
     private Long id;
     private String titulo;
     private String autor;
-    private int estoque;
 }

@@ -53,7 +53,6 @@ public class LivroService {
 
         livro.setTitulo(dto.getTitulo());
         livro.setAutor(dto.getAutor());
-        livro.setEstoque(dto.getEstoque());
 
         Livro livroAtualizado = livroRepository.save(livro);
 

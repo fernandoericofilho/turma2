@@ -2,8 +2,6 @@ package com.dev.sistema_biblioteca.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -32,10 +30,6 @@ public class Livro {
     @Column(nullable = false)
     @Size(min = 2, max = 255)
     private String autor;
-
-    @NotNull
-    @PositiveOrZero
-    private int estoque;
 
     @OneToMany(mappedBy = "livro")
     private List<LivroEmprestimo> livroEmprestimos;

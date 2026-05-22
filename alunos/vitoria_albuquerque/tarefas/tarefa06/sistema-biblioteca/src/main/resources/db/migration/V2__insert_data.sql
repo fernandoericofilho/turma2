@@ -4,12 +4,12 @@ INSERT INTO leitor (nome, email) VALUES
     ('Ana Alves', 'ana@email.com'),
     ('Carla Costa', 'carla@email.com');
 
-INSERT INTO livro (titulo, autor, estoque) VALUES
-    ('Tudo é rio', 'Carla Madeira', 2),
-    ('Felicidade Clandestina', 'Clarice Lispector', 3),
-    ('Dom Casmurro', 'Machado de Assis', 3),
-    ('Clean Code', 'Robert C. Martin', 2),
-    ('Entendendo Algoritmos', 'Aditya Y. Bhargava', 5);
+INSERT INTO livro (titulo, autor) VALUES
+    ('Tudo é rio', 'Carla Madeira'),
+    ('Felicidade Clandestina', 'Clarice Lispector'),
+    ('Dom Casmurro', 'Machado de Assis'),
+    ('Clean Code', 'Robert C. Martin'),
+    ('Entendendo Algoritmos', 'Aditya Y. Bhargava');
 
 INSERT INTO emprestimo (data_emprestimo, data_devolucao, leitor_id) VALUES
     ('2026-01-10 10:00:00', '2026-01-20 16:00:00', 1),

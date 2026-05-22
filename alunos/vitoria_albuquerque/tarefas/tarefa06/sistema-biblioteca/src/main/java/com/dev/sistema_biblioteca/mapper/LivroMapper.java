@@ -15,7 +15,6 @@ public class LivroMapper {
 
         dto.setTitulo(request.getTitulo());
         dto.setAutor(request.getAutor());
-        dto.setEstoque(request.getEstoque());
 
         return dto;
     }
@@ -27,7 +26,6 @@ public class LivroMapper {
         livro.setId(dto.getId());
         livro.setTitulo(dto.getTitulo());
         livro.setAutor(dto.getAutor());
-        livro.setEstoque(dto.getEstoque());
 
         return livro;
     }
@@ -39,7 +37,6 @@ public class LivroMapper {
         dto.setId(livro.getId());
         dto.setTitulo(livro.getTitulo());
         dto.setAutor(livro.getAutor());
-        dto.setEstoque(livro.getEstoque());
 
         return dto;
     }
@@ -51,7 +48,6 @@ public class LivroMapper {
         response.setId(dto.getId());
         response.setTitulo(dto.getTitulo());
         response.setAutor(dto.getAutor());
-        response.setEstoque(dto.getEstoque());
 
         return response;
     }

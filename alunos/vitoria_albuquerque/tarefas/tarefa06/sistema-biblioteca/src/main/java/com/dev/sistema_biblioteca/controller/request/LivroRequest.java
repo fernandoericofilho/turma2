@@ -20,8 +20,4 @@ public class LivroRequest {
     @NotBlank(message = "Autor obrigatório")
     @Size(min = 2, max = 255)
     private String autor;
-
-    @NotNull
-    @PositiveOrZero
-    private int estoque;
 }
