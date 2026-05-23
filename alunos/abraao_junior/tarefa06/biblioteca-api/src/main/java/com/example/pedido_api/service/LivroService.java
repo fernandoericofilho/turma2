@@ -1,6 +1,8 @@
 package com.example.pedido_api.service;
 
 import com.example.pedido_api.dto.LivroDTO;
+import com.example.pedido_api.exception.BusinessException;
+import com.example.pedido_api.exception.ResourceNotFoundException;
 import com.example.pedido_api.mapper.LivroMapper;
 import com.example.pedido_api.model.Livro;
 import com.example.pedido_api.repository.LivroEmprestimoRepository;
@@ -39,28 +41,34 @@ public class LivroService {
 
         return repository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Livro não encontrado"));
+                        new ResourceNotFoundException("Livro não encontrado"));
     }
 
     public LivroDTO buscarPorId(Long id) {
 
         Livro livro = repository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Livro não encontrado"));
+                        new ResourceNotFoundException("Livro não encontrado"));
 
         return mapper.toDTO(livro);
     }
 
-    public void diminuirEstoque(Livro livro, int quantidade) {
+    public void diminuirEstoque(Long id, int quantidade) {
+
+        Livro livro = repository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Livro não encontrado"
+                        )
+                );
 
         if (livro.getEstoque() < quantidade) {
-            throw new RuntimeException("Estoque insuficiente");
+            throw new BusinessException(
+                    "Estoque insuficiente"
+            );
         }
 
-        livro.setEstoque(
-                livro.getEstoque() - quantidade
-        );
-
+        livro.setEstoque(livro.getEstoque() - quantidade);
         repository.save(livro);
     }
 
@@ -68,7 +76,7 @@ public class LivroService {
 
         Livro livro = repository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Livro não encontrado"));
+                        new ResourceNotFoundException("Livro não encontrado"));
 
         livro.setTitulo(dto.getTitulo());
         livro.setAutor(dto.getAutor());
@@ -83,7 +91,7 @@ public class LivroService {
         if (livroEmprestimoRepository
                 .existsByLivroId(id)) {
 
-            throw new RuntimeException(
+            throw new BusinessException(
                     "Livro possui empréstimos vinculados"
             );
         }

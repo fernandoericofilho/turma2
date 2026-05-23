@@ -1,5 +1,6 @@
 package com.example.pedido_api.service;
 
+import com.example.pedido_api.dto.LivroDTO;
 import com.example.pedido_api.model.Livro;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,12 @@ public class LivroServiceTest {
     @Test
     void deveCriarLivro() {
 
-        Livro livro = new Livro();
-        livro.setTitulo("Entendendo Algoritmos");
-        livro.setAutor("Aditya Bhargava");
-        livro.setEstoque(10);
+        LivroDTO dto = new LivroDTO();
+        dto.setTitulo("Entendendo Algoritmos");
+        dto.setAutor("Aditya Bhargava");
+        dto.setEstoque(10);
 
-        Livro livroSalvo = livroService.salvar(livro);
+        LivroDTO livroSalvo = livroService.cadastrar(dto);
 
         assertNotNull(livroSalvo.getId());
 
@@ -34,17 +35,17 @@ public class LivroServiceTest {
     @Test
     void deveLancarErroQuandoEstoqueForInsuficiente() {
 
-        Livro livro = new Livro();
+        LivroDTO dto = new LivroDTO();
 
-        livro.setTitulo("O Programador Apaixonado");
-        livro.setAutor("Chad Fowler");
-        livro.setEstoque(3);
+        dto.setTitulo("O Programador Apaixonado");
+        dto.setAutor("Chad Fowler");
+        dto.setEstoque(3);
 
-        Livro livroSalvo = livroService.salvar(livro);
+        LivroDTO livroSalvo = livroService.cadastrar(dto);
 
         RuntimeException erro = assertThrows(
                 RuntimeException.class,
-                () -> livroService.diminuirEstoque(livroSalvo, 5)
+                () -> livroService.diminuirEstoque(livroSalvo.getId(), 5)
         );
 
         assertEquals("Estoque insuficiente", erro.getMessage());

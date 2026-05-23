@@ -1,5 +1,6 @@
 package com.example.pedido_api.service;
 
+import com.example.pedido_api.dto.LivroDTO;
 import com.example.pedido_api.model.Emprestimo;
 import com.example.pedido_api.model.Leitor;
 import com.example.pedido_api.model.Livro;
@@ -28,12 +29,12 @@ public class EmprestimoServiceTest {
     @Test
     void deveCriarEmprestimo() {
 
-        Livro livro = new Livro();
-        livro.setTitulo("Entendendo Algoritmos");
-        livro.setAutor("Aditya Bhargava");
-        livro.setEstoque(10);
+        LivroDTO dto = new LivroDTO();
+        dto.setTitulo("Entendendo Algoritmos");
+        dto.setAutor("Aditya Bhargava");
+        dto.setEstoque(10);
 
-        livro = livroService.salvar(livro);
+        LivroDTO livroSalvo = livroService.cadastrar(dto);
 
         Leitor leitor = new Leitor();
         leitor.setNome("Joana");
@@ -43,7 +44,7 @@ public class EmprestimoServiceTest {
 
         Emprestimo emprestimo = emprestimoService.criar(
                 leitor.getId(),
-                Map.of(livro.getId(), 2)
+                Map.of(livroSalvo.getId(), 2)
         );
 
         assertNotNull(emprestimo.getId());

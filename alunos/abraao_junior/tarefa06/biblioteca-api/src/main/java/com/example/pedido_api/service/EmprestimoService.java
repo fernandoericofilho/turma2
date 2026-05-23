@@ -40,7 +40,7 @@ public class EmprestimoService {
 
             Livro livro = livroService.buscarEntityPorId(entry.getKey());
 
-            livroService.diminuirEstoque(livro, entry.getValue());
+            livroService.diminuirEstoque(livro.getId(), entry.getValue());
 
             LivroEmprestimo le = new LivroEmprestimo();
             le.setLivro(livro);

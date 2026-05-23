@@ -10,20 +10,38 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(RuntimeException.class)
+    @ExceptionHandler(
+            ResourceNotFoundException.class
+    )
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleRuntime(RuntimeException ex) {
+    public String handleNotFound(
+            ResourceNotFoundException ex
+    ) {
 
         return ex.getMessage();
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler(
+            BusinessException.class
+    )
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleBusiness(
+            BusinessException ex
+    ) {
+
+        return ex.getMessage();
+    }
+
+    @ExceptionHandler(
+            MethodArgumentNotValidException.class
+    )
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleValidation(
             MethodArgumentNotValidException ex
     ) {
 
-        Map<String, String> erros = new HashMap<>();
+        Map<String, String> erros =
+                new HashMap<>();
 
         ex.getBindingResult()
                 .getFieldErrors()
