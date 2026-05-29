@@ -1,6 +1,6 @@
 package com.turma2.biblioteca_api.services;
 
-import com.turma2.biblioteca_api.dtos.CadastroEmprestimoDTO;
+import com.turma2.biblioteca_api.controllers.request.CadastroEmprestimoRequest;
 import com.turma2.biblioteca_api.models.Emprestimo;
 import com.turma2.biblioteca_api.models.Leitor;
 import com.turma2.biblioteca_api.models.Livro;
@@ -24,16 +24,16 @@ public class EmprestimoService {
         this.livroService = livroService;
     }
 
-    public Emprestimo cadastrarEmprestimo(CadastroEmprestimoDTO cadastroEmprestimoDTO) {
-        Leitor leitor = leitorService.buscarLeitorPorId(cadastroEmprestimoDTO.leitorId());
-        List<Livro> livros = cadastroEmprestimoDTO.livrosIds()
+    public Emprestimo cadastrarEmprestimo(CadastroEmprestimoRequest cadastroEmprestimo) {
+        Leitor leitor = leitorService.buscarLeitorEntityPorId(cadastroEmprestimo.leitorId());
+        List<Livro> livros = cadastroEmprestimo.livrosIds()
                 .stream()
-                .map(livroService::buscarLivroPorId)
+                .map(livroService::buscarLivroEntityPorId)
                 .toList();
         Emprestimo emprestimo = new Emprestimo();
         emprestimo.setLeitor(leitor);
         emprestimo.setDataEmprestimo(LocalDate.now());
-        emprestimo.setDataDevolucao(cadastroEmprestimoDTO.dataDevolucao());
+        emprestimo.setDataDevolucao(cadastroEmprestimo.dataDevolucao());
 
         List<LivroEmprestimo> livrosEmprestimo = livros.stream()
                 .map(livro -> {
