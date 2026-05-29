@@ -49,4 +49,16 @@ public class LivroController {
         LivroResponse livroResponse = livroService.cadastrarLivro(livroRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(livroResponse);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<LivroResponse> editar(@PathVariable Long id, @RequestBody @Valid LivroRequest livroRequest) {
+        LivroResponse livroResponse = livroService.editarLivro(id, livroRequest);
+        return ResponseEntity.ok(livroResponse);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
+        livroService.excluirLivro(id);
+        return ResponseEntity.noContent().build();
+    }
 }

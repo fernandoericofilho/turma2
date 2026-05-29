@@ -6,6 +6,7 @@ import com.turma2.biblioteca_api.exceptions.RecursoNaoEncontradoException;
 import com.turma2.biblioteca_api.mappers.LivroMapper;
 import com.turma2.biblioteca_api.models.Livro;
 import com.turma2.biblioteca_api.repositories.LivroRepository;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,5 +60,19 @@ public class LivroService {
                 .map(livro -> livroMapper.entityToResponse(livro))
                 .toList();
         return livrosResponse;
+    }
+
+    public LivroResponse editarLivro(Long id, @Valid LivroRequest livroRequest) {
+        var livro = buscarLivroEntityPorId(id);
+        livro.setTitulo(livroRequest.titulo());
+        livro.setAutor(livroRequest.autor());
+        livro.setEstoque(livroRequest.estoque());
+        Livro livroAtualizado = livroRepository.save(livro);
+        return livroMapper.entityToResponse(livroAtualizado);
+    }
+
+    public void excluirLivro(Long id) {
+        Livro livro = buscarLivroEntityPorId(id);
+        livroRepository.delete(livro);
     }
 }
