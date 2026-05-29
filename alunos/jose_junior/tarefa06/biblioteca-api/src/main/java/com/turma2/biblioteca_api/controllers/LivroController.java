@@ -4,6 +4,8 @@ import com.turma2.biblioteca_api.controllers.request.LivroRequest;
 import com.turma2.biblioteca_api.controllers.response.LivroResponse;
 import com.turma2.biblioteca_api.services.LivroService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +23,8 @@ public class LivroController {
     }
 
     @GetMapping
-    public ResponseEntity<List<LivroResponse>> listarTodosOsLivros() {
-        var livros = livroService.listarTodosOsLivros();
-        return ResponseEntity.ok(livros);
+    public ResponseEntity<Page<LivroResponse>> listarTodosOsLivros(Pageable pageable) {
+        return ResponseEntity.ok(livroService.listarTodosOsLivros(pageable));
     }
 
     @GetMapping("/{id}")

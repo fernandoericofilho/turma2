@@ -6,6 +6,8 @@ import com.turma2.biblioteca_api.exceptions.RecursoNaoEncontradoException;
 import com.turma2.biblioteca_api.mappers.LeitorMapper;
 import com.turma2.biblioteca_api.models.Leitor;
 import com.turma2.biblioteca_api.repositories.LeitorRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,12 +29,8 @@ public class LeitorService {
         return leitorMapper.entityToResponse(leitor);
     }
 
-    public List<LeitorResponse> listarTodosOsLeitores() {
-        var leitores = leitorRepository.findAll();
-        List<LeitorResponse> leitorResponses = leitores.stream()
-                .map(leitor -> leitorMapper.entityToResponse(leitor))
-                .toList();
-        return leitorResponses;
+    public Page<LeitorResponse> listarTodosOsLeitores(Pageable pageable) {
+        return leitorRepository.findAll(pageable).map(leitorMapper::entityToResponse);
     }
 
     public Leitor buscarLeitorEntityPorId(Long id) {

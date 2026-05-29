@@ -4,6 +4,8 @@ import com.turma2.biblioteca_api.controllers.request.LeitorRequest;
 import com.turma2.biblioteca_api.controllers.response.LeitorResponse;
 import com.turma2.biblioteca_api.services.LeitorService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +23,8 @@ public class LeitorController {
     }
 
     @GetMapping
-    public ResponseEntity<List<LeitorResponse>> listarTodosOsLeitores() {
-        var leitores = leitorService.listarTodosOsLeitores();
-        return ResponseEntity.ok(leitores);
+    public ResponseEntity<Page<LeitorResponse>> listarTodosOsLeitores(Pageable pageable) {
+        return ResponseEntity.ok(leitorService.listarTodosOsLeitores(pageable));
     }
 
     @GetMapping("/{id}")

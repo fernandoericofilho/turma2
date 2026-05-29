@@ -1,11 +1,15 @@
 package com.turma2.biblioteca_api.services;
 
-import com.turma2.biblioteca_api.controllers.request.CadastroEmprestimoRequest;
+import com.turma2.biblioteca_api.controllers.request.EmprestimoRequest;
+import com.turma2.biblioteca_api.controllers.response.EmprestimoResponse;
+import com.turma2.biblioteca_api.mappers.EmprestimoMapper;
 import com.turma2.biblioteca_api.models.Emprestimo;
 import com.turma2.biblioteca_api.models.Leitor;
 import com.turma2.biblioteca_api.models.Livro;
 import com.turma2.biblioteca_api.models.LivroEmprestimo;
 import com.turma2.biblioteca_api.repositories.EmprestimoRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,23 +21,25 @@ public class EmprestimoService {
     private final EmprestimoRepository emprestimoRepository;
     private final LeitorService leitorService;
     private final LivroService livroService;
+    private final EmprestimoMapper emprestimoMapper;
 
-    public EmprestimoService(EmprestimoRepository repository, LeitorService leitorService, LivroService livroService) {
+    public EmprestimoService(EmprestimoRepository repository, LeitorService leitorService, LivroService livroService, EmprestimoMapper emprestimoMapper) {
         this.emprestimoRepository = repository;
         this.leitorService = leitorService;
         this.livroService = livroService;
+        this.emprestimoMapper = emprestimoMapper;
     }
 
-    public Emprestimo cadastrarEmprestimo(CadastroEmprestimoRequest cadastroEmprestimo) {
-        Leitor leitor = leitorService.buscarLeitorEntityPorId(cadastroEmprestimo.leitorId());
-        List<Livro> livros = cadastroEmprestimo.livrosIds()
+    public EmprestimoResponse cadastrarEmprestimo(EmprestimoRequest emprestimoRequest) {
+        Leitor leitor = leitorService.buscarLeitorEntityPorId(emprestimoRequest.leitorId());
+        List<Livro> livros = emprestimoRequest.livrosIds()
                 .stream()
                 .map(livroService::buscarLivroEntityPorId)
                 .toList();
         Emprestimo emprestimo = new Emprestimo();
         emprestimo.setLeitor(leitor);
         emprestimo.setDataEmprestimo(LocalDate.now());
-        emprestimo.setDataDevolucao(cadastroEmprestimo.dataDevolucao());
+        emprestimo.setDataDevolucao(emprestimoRequest.dataDevolucao());
 
         List<LivroEmprestimo> livrosEmprestimo = livros.stream()
                 .map(livro -> {
@@ -45,10 +51,11 @@ public class EmprestimoService {
                 }).toList();
 
         emprestimo.setLivros(livrosEmprestimo);
-        return emprestimoRepository.save(emprestimo);
+        emprestimoRepository.save(emprestimo);
+        return emprestimoMapper.entityToResponse(emprestimo);
     }
 
-    public List<Emprestimo> listarTodosOsEmprestimos() {
-        return emprestimoRepository.findAll();
+    public Page<EmprestimoResponse> listarTodosOsEmprestimos(Pageable pageable) {
+        return emprestimoRepository.findAll(pageable).map(emprestimoMapper::entityToResponse);
     }
 }

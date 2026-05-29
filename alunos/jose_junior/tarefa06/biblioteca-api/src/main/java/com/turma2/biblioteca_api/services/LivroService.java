@@ -7,8 +7,9 @@ import com.turma2.biblioteca_api.mappers.LivroMapper;
 import com.turma2.biblioteca_api.models.Livro;
 import com.turma2.biblioteca_api.repositories.LivroRepository;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -28,12 +29,8 @@ public class LivroService {
         return livroMapper.entityToResponse(livro);
     }
 
-    public List<LivroResponse> listarTodosOsLivros() {
-        var livros = livroRepository.findAll();
-        List<LivroResponse> livrosResponse = livros.stream()
-                .map(livro -> livroMapper.entityToResponse(livro))
-                .toList();
-        return livrosResponse;
+    public Page<LivroResponse> listarTodosOsLivros(Pageable pageable) {
+        return livroRepository.findAll(pageable).map(livroMapper::entityToResponse);
     }
 
     public Livro buscarLivroEntityPorId(Long id) {
