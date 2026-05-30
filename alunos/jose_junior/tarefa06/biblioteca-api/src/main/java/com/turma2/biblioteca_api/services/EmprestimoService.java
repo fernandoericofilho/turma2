@@ -2,6 +2,7 @@ package com.turma2.biblioteca_api.services;
 
 import com.turma2.biblioteca_api.controllers.request.EmprestimoRequest;
 import com.turma2.biblioteca_api.controllers.response.EmprestimoResponse;
+import com.turma2.biblioteca_api.exceptions.EstoqueInsuficienteException;
 import com.turma2.biblioteca_api.mappers.EmprestimoMapper;
 import com.turma2.biblioteca_api.models.Emprestimo;
 import com.turma2.biblioteca_api.models.Leitor;
@@ -11,6 +12,7 @@ import com.turma2.biblioteca_api.repositories.EmprestimoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -30,12 +32,25 @@ public class EmprestimoService {
         this.emprestimoMapper = emprestimoMapper;
     }
 
+    @Transactional
     public EmprestimoResponse cadastrarEmprestimo(EmprestimoRequest emprestimoRequest) {
+        if (emprestimoRequest.livrosIds().size() != emprestimoRequest.livrosIds().stream().distinct().count()) {
+            throw new IllegalArgumentException("Não é permitido emprestar o mesmo livro mais de uma vez na mesma solicitação.");
+        }
+
         Leitor leitor = leitorService.buscarLeitorEntityPorId(emprestimoRequest.leitorId());
         List<Livro> livros = emprestimoRequest.livrosIds()
                 .stream()
                 .map(livroService::buscarLivroEntityPorId)
                 .toList();
+
+        for (Livro livro : livros) {
+            if (livro.getEstoque() <= 0) {
+                throw new EstoqueInsuficienteException("Livro '" + livro.getTitulo() + "' sem estoque disponível.");
+            }
+            livro.setEstoque(livro.getEstoque() - 1);
+        }
+
         Emprestimo emprestimo = new Emprestimo();
         emprestimo.setLeitor(leitor);
         emprestimo.setDataEmprestimo(LocalDate.now());
