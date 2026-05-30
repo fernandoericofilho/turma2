@@ -24,6 +24,17 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
     }
 
+    @ExceptionHandler(EstoqueInsuficienteException.class)
+    public ResponseEntity<Map<String, Object>> tratarEstoqueInsuficiente(EstoqueInsuficienteException exception) {
+        Map<String, Object> erro = new HashMap<>();
+        erro.put("timestamp", LocalDateTime.now());
+        erro.put("status", HttpStatus.BAD_REQUEST.value());
+        erro.put("erro", "Estoque insuficiente");
+        erro.put("mensagem", exception.getMessage());
+
+        return ResponseEntity.badRequest().body(erro);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> tratarValidacao(MethodArgumentNotValidException exception) {
         Map<String, Object> erro = new HashMap<>();
@@ -38,6 +49,17 @@ public class GlobalExceptionHandler {
         });
 
         erro.put("campos", campos);
+
+        return ResponseEntity.badRequest().body(erro);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, Object>> tratarArgumentoInvalido(IllegalArgumentException exception) {
+        Map<String, Object> erro = new HashMap<>();
+        erro.put("timestamp", LocalDateTime.now());
+        erro.put("status", HttpStatus.BAD_REQUEST.value());
+        erro.put("erro", "Requisição inválida");
+        erro.put("mensagem", exception.getMessage());
 
         return ResponseEntity.badRequest().body(erro);
     }
