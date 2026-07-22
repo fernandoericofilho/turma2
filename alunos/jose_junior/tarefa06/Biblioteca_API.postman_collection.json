@@ -1,0 +1,516 @@
+{
+  "info": {
+    "_postman_id": "83c07ee0-028e-43f0-89f0-be7e305c93fc",
+    "name": "Tech Academy Starter - Turma 2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "36156491"
+  },
+  "item": [
+    {
+      "name": "Livros",
+      "item": [
+        {
+          "name": "Listar Todos os Livros",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Head First Java\",\r\n    \"autor\": \"Kathy Sierra\",\r\n    \"estoque\": 10\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/livros",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livros"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Livro por ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Head First Java\",\r\n    \"autor\": \"Kathy Sierra\",\r\n    \"estoque\": 10\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/livros/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livros",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Livros por Título",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/livros/titulo?titulo=Java",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livros",
+                "titulo"
+              ],
+              "query": [
+                {
+                  "key": "titulo",
+                  "value": "Java"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Livros por Autor",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Head First Java\",\r\n    \"autor\": \"Kathy Sierra\",\r\n    \"estoque\": 10\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/livros/autor?autor=Robert",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livros",
+                "autor"
+              ],
+              "query": [
+                {
+                  "key": "autor",
+                  "value": "Robert"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cadastrar Novo Livro",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status 201\", function () {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Head First Java\",\r\n    \"autor\": \"Kathy Sierra\",\r\n    \"estoque\": 10\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/livros",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livros"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Editar Livro",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n        \"titulo\": \"Learning Python\",\r\n        \"autor\": \"Guido V. Rossum\",\r\n        \"estoque\": 10\r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/livros/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livros",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Excluir Livro",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Head First Java\",\r\n    \"autor\": \"Kathy Sierra\",\r\n    \"estoque\": 10\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/livros/5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "livros",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Leitores",
+      "item": [
+        {
+          "name": "Listar Todos os Leitores",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Head First Java\",\r\n    \"autor\": \"Kathy Sierra\",\r\n    \"estoque\": 10\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/leitores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "leitores"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Leitor por ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Head First Java\",\r\n    \"autor\": \"Kathy Sierra\",\r\n    \"estoque\": 10\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/leitores/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "leitores",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cadastrar Novo Leitor",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"Maria Joana\",\r\n    \"email\": \"mariajoana@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/leitores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "leitores"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Leitores por Nome",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Head First Java\",\r\n    \"autor\": \"Kathy Sierra\",\r\n    \"estoque\": 10\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/leitores/nome?nome=Jo",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "leitores",
+                "nome"
+              ],
+              "query": [
+                {
+                  "key": "nome",
+                  "value": "Jo"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Leitor por E-mail",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Head First Java\",\r\n    \"autor\": \"Kathy Sierra\",\r\n    \"estoque\": 10\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/leitores/email?email=maria@email.com",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "leitores",
+                "email"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "maria@email.com"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Empréstimos",
+      "item": [
+        {
+          "name": "Listar Todos os Empréstimos",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"titulo\": \"Head First Java\",\r\n    \"autor\": \"Kathy Sierra\",\r\n    \"estoque\": 10\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/emprestimos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "emprestimos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cadastrar Empréstimo",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"leitorId\": 5,\r\n    \"livrosIds\": [\r\n        3,\r\n        4\r\n    ],\r\n    \"dataDevolucao\": \"2026-06-03\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/emprestimos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "emprestimos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Empréstimos por Leitor",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"leitorId\": 5,\r\n    \"livrosIds\": [\r\n        3,\r\n        4\r\n    ],\r\n    \"dataDevolucao\": \"2026-06-03\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/relatorios/emprestimos/leitor/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "relatorios",
+                "emprestimos",
+                "leitor",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Empréstimos por Livro",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/relatorios/emprestimos/livro/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "relatorios",
+                "emprestimos",
+                "livro",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Livros mais Emprestados",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/relatorios/livros-mais-emprestados",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "relatorios",
+                "livros-mais-emprestados"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
