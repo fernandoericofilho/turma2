@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: stashflow-postgres
+    environment:
+      POSTGRES_DB: stashflow
+      POSTGRES_USER: stashflow
+      POSTGRES_PASSWORD: stashflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - stashflow_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stashflow -d stashflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  stashflow_postgres_data:
